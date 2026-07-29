@@ -1,0 +1,37 @@
+# OpenSpec / SDD Configuration for vault
+project: vault
+version: 1.0.0
+mode: hybrid
+
+stack:
+  framework: Next.js 16.2.12 (App Router)
+  language: TypeScript 5
+  styling: Tailwind CSS 4
+  package_manager: pnpm
+
+quality:
+  linter:
+    name: ESLint
+    version: 9
+    command: pnpm lint
+    config: eslint.config.mjs
+  type_checker:
+    name: TypeScript Compiler
+    version: 5
+    command: npx tsc --noEmit
+    config: tsconfig.json
+
+testing:
+  strict_tdd: false
+  runner: none
+  layers: []
+  coverage: unavailable
+  explanation: >-
+    No unit, integration, or E2E test runner (e.g. Vitest, Jest, Playwright) is currently configured in package.json.
+    Strict TDD is set to false until a test framework is installed.
+
+artifacts:
+  openspec_dir: openspec
+  specs_dir: openspec/specs
+  changes_archive_dir: openspec/changes/archive
+  skill_registry: .atl/skill-registry.md
