@@ -3,6 +3,7 @@ import { prisma } from "@/app/lib/prisma";
 import { checkRateLimit } from "@/app/lib/rate-limit";
 import { withTimeout } from "@/app/lib/timeout";
 
+export const dynamic = "force-dynamic";
 export const maxDuration = 10;
 
 export async function GET(req: NextRequest) {

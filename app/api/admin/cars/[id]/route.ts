@@ -4,6 +4,7 @@ import { getAdminSession } from "@/app/lib/auth";
 import { checkRateLimit } from "@/app/lib/rate-limit";
 import { withTimeout } from "@/app/lib/timeout";
 
+export const dynamic = "force-dynamic";
 export const maxDuration = 10;
 
 async function verifyAdminAuth() {
