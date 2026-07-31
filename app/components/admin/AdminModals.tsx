@@ -2,7 +2,7 @@
 
 import React from "react";
 import { CatalogFormData, ConfirmModalState } from "../../types/admin";
-import { CatalogItem } from "../../types/catalog";
+import { CatalogItem, Brand, ItemStatus } from "../../types/catalog";
 import { AlertTriangleIcon, FolderIcon, CloseIcon } from "../ui/Icons";
 
 export interface AdminModalsProps {
@@ -61,7 +61,7 @@ export function AdminModals({
                 <label className="block text-xs font-semibold text-zinc-400 mb-2">MARCA</label>
                 <select
                   value={formData.brand}
-                  onChange={(e) => setFormData({ ...formData, brand: e.target.value as any })}
+                  onChange={(e) => setFormData({ ...formData, brand: e.target.value as Brand })}
                   className="w-full px-4 py-3 rounded bg-[#08080a] border border-white/15 text-sm text-white focus:border-[#d4af37] focus:outline-none"
                 >
                   <option value="Bugatti">Bugatti</option>
@@ -140,12 +140,24 @@ export function AdminModals({
                 <label className="block text-xs font-semibold text-zinc-400 mb-2">ESTADO DE DISPONIBILIDAD</label>
                 <select
                   value={formData.status}
-                  onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value as ItemStatus })}
                   className="w-full px-4 py-3 rounded bg-[#08080a] border border-white/15 text-sm text-white focus:border-[#d4af37] focus:outline-none"
                 >
                   <option value="Disponible">Disponible</option>
                   <option value="Unidad Final">Unidad Final</option>
                 </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-2">UNIDADES EN INVENTARIO (STOCK)</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="stock"
+                  value={formData.stock ?? 1}
+                  onChange={(e) => setFormData({ ...formData, stock: Math.max(0, parseInt(e.target.value) || 0) })}
+                  className="w-full px-4 py-3 rounded bg-[#08080a] border border-white/15 text-sm text-white focus:border-[#d4af37] focus:outline-none"
+                />
               </div>
 
               <div className="md:col-span-2">
@@ -202,7 +214,7 @@ export function AdminModals({
                 <label className="block text-xs font-semibold text-zinc-400 mb-2">MARCA</label>
                 <select
                   value={formData.brand}
-                  onChange={(e) => setFormData({ ...formData, brand: e.target.value as any })}
+                  onChange={(e) => setFormData({ ...formData, brand: e.target.value as Brand })}
                   className="w-full px-4 py-3 rounded bg-[#08080a] border border-white/15 text-sm text-white focus:border-[#d4af37] focus:outline-none"
                 >
                   <option value="Bugatti">Bugatti</option>
@@ -287,12 +299,24 @@ export function AdminModals({
                 <label className="block text-xs font-semibold text-zinc-400 mb-2">ESTADO DE DISPONIBILIDAD</label>
                 <select
                   value={formData.status}
-                  onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value as ItemStatus })}
                   className="w-full px-4 py-3 rounded bg-[#08080a] border border-white/15 text-sm text-white focus:border-[#d4af37] focus:outline-none"
                 >
                   <option value="Disponible">Disponible</option>
                   <option value="Unidad Final">Unidad Final</option>
                 </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-zinc-400 mb-2">UNIDADES EN INVENTARIO (STOCK)</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="stock"
+                  value={formData.stock ?? 1}
+                  onChange={(e) => setFormData({ ...formData, stock: Math.max(0, parseInt(e.target.value) || 0) })}
+                  className="w-full px-4 py-3 rounded bg-[#08080a] border border-white/15 text-sm text-white focus:border-[#d4af37] focus:outline-none"
+                />
               </div>
 
               <div className="md:col-span-2">

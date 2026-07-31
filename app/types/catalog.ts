@@ -18,6 +18,7 @@ export interface CatalogItem {
   topSpeed: string;
   priceUSD: number;
   status: ItemStatus;
+  stock: number;
   description: string;
   image: string;
   specs?: HypercarSpecs;

@@ -12,6 +12,7 @@ export interface CatalogFormData {
   priceUSD: number;
   currency?: "USD" | "EUR" | "GBP" | "AED";
   status: ItemStatus;
+  stock: number;
   description: string;
   image: string;
 }

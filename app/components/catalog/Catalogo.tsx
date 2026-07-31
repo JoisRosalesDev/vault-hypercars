@@ -1,29 +1,33 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
-import { CatalogItem } from "../../types/catalog";
+import React, { useState, useEffect } from "react";
+import { CatalogItem, Brand, ItemStatus } from "../../types/catalog";
 import { CatalogFilter } from "./CatalogFilter";
 import { CatalogGrid } from "./CatalogGrid";
 import { CatalogModal } from "./CatalogModal";
 import { SparklesIcon } from "../ui/Icons";
 
-export function mapToCatalogItem(car: any): CatalogItem {
+export function mapToCatalogItem(car: Record<string, unknown>): CatalogItem {
+  const hp = typeof car.hp === "number" ? car.hp : null;
+  const powerStr = hp ? `${hp.toLocaleString()} HP` : (typeof car.power === "string" ? car.power : "N/A");
+
   return {
-    id: car.id,
-    name: car.name,
-    brand: car.brand,
-    year: String(car.year),
-    power: car.hp ? `${car.hp.toLocaleString()} HP` : (car.power || "N/A"),
-    topSpeed: car.topSpeed,
+    id: String(car.id || ""),
+    name: String(car.name || ""),
+    brand: (car.brand as Brand) || "Bugatti",
+    year: String(car.year || ""),
+    power: powerStr,
+    topSpeed: String(car.topSpeed || ""),
     priceUSD: Number(car.price ?? car.priceUSD ?? 0),
-    status: car.status,
-    description: car.description || "",
-    image: car.image || "",
+    status: (car.status as ItemStatus) || "Disponible",
+    stock: Number(car.stock ?? 0),
+    description: String(car.description || ""),
+    image: String(car.image || ""),
     specs: {
-      power: car.hp ? `${car.hp.toLocaleString()} HP` : (car.power || "N/A"),
-      topSpeed: car.topSpeed,
-      acceleration: car.acceleration,
-      engine: car.engine
+      power: powerStr,
+      topSpeed: String(car.topSpeed || ""),
+      acceleration: car.acceleration ? String(car.acceleration) : undefined,
+      engine: car.engine ? String(car.engine) : undefined
     }
   };
 }
@@ -35,32 +39,43 @@ export function Catalogo() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchCatalog = useCallback(async (brand: string) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const url = brand !== "all" 
-        ? `/api/catalog?brand=${encodeURIComponent(brand)}`
-        : `/api/catalog`;
-      const res = await fetch(url);
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || `HTTP error ${res.status}`);
-      }
-      const data = await res.json();
-      const mapped = Array.isArray(data) ? data.map(mapToCatalogItem) : [];
-      setItems(mapped);
-    } catch (err: any) {
-      console.error("[Catalogo Fetch Error]:", err);
-      setError(err.message || "No se pudo obtener el catálogo de vehículos.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
   useEffect(() => {
-    fetchCatalog(selectedBrand);
-  }, [selectedBrand, fetchCatalog]);
+    let isMounted = true;
+    const fetchCatalog = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const url = selectedBrand !== "all"
+          ? `/api/catalog?brand=${encodeURIComponent(selectedBrand)}`
+          : `/api/catalog`;
+        const res = await fetch(url);
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || `HTTP error ${res.status}`);
+        }
+        const data = await res.json();
+        if (isMounted) {
+          const mapped = Array.isArray(data) ? data.map(mapToCatalogItem) : [];
+          setItems(mapped);
+        }
+      } catch (err: unknown) {
+        console.error("[Catalogo Fetch Error]:", err);
+        if (isMounted) {
+          setError((err as Error).message || "No se pudo obtener el catálogo de vehículos.");
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    fetchCatalog();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedBrand]);
 
   return (
     <section id="catalogo" className="relative py-28 px-8 max-w-7xl mx-auto w-full z-10">

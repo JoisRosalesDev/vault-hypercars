@@ -31,8 +31,9 @@ export async function GET(req: NextRequest) {
       9000
     );
     return NextResponse.json(cars, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || "Failed to fetch admin hypercars" }, { status: error.status || 500 });
+  } catch (error: unknown) {
+    const err = error as { message?: string; status?: number };
+    return NextResponse.json({ error: err.message || "Failed to fetch admin hypercars" }, { status: err.status || 500 });
   }
 }
 
@@ -46,7 +47,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const { name, brand, year, price, hp, topSpeed, acceleration, engine, status, image, description } = body;
+    const { name, brand, year, price, hp, topSpeed, acceleration, engine, status, stock, image, description } = body;
 
     if (!name || !brand || year === undefined || price === undefined || hp === undefined || !topSpeed || !status || image === undefined) {
       return NextResponse.json({ error: "Missing required hypercar fields" }, { status: 400 });
@@ -64,6 +65,7 @@ export async function POST(req: NextRequest) {
           acceleration: acceleration || "N/A",
           engine: engine || "N/A",
           status,
+          stock: stock !== undefined ? Number(stock) : 1,
           image: image || "",
           description: description || "",
         },
@@ -72,7 +74,8 @@ export async function POST(req: NextRequest) {
     );
 
     return NextResponse.json(newCar, { status: 201 });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || "Failed to create hypercar record" }, { status: error.status || 500 });
+  } catch (error: unknown) {
+    const err = error as { message?: string; status?: number };
+    return NextResponse.json({ error: err.message || "Failed to create hypercar record" }, { status: err.status || 500 });
   }
 }

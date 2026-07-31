@@ -28,13 +28,27 @@ export function ProductCard({
 
           <span
             className={`text-[11px] font-bold tracking-wider px-2.5 py-1 rounded-full flex items-center gap-1.5 ${
-              item.status === "Disponible"
+              item.stock > 1
                 ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
-                : "bg-amber-500/10 text-amber-400 border border-amber-500/30"
+                : item.stock === 1
+                ? "bg-amber-500/10 text-amber-400 border border-amber-500/30"
+                : "bg-rose-500/10 text-rose-400 border border-rose-500/30"
             }`}
           >
-            <span className={`w-1.5 h-1.5 rounded-full ${item.status === "Disponible" ? "bg-emerald-400 animate-pulse" : "bg-amber-400"}`} />
-            {item.status}
+            <span
+              className={`w-1.5 h-1.5 rounded-full ${
+                item.stock > 1
+                  ? "bg-emerald-400"
+                  : item.stock === 1
+                  ? "bg-amber-400 animate-pulse"
+                  : "bg-rose-400"
+              }`}
+            />
+            {item.stock > 1
+              ? `Stock: ${item.stock} u.`
+              : item.stock === 1
+              ? "¡Última unidad!"
+              : "AGOTADO"}
           </span>
         </div>
 
@@ -88,9 +102,14 @@ export function ProductCard({
         <div className="flex gap-2.5">
           <button
             onClick={() => onAddToCart(item)}
-            className="flex-1 py-3.5 bg-[#d4af37] text-black text-xs font-extrabold tracking-[0.15em] rounded hover:bg-[#f5d061] active:scale-[0.97] transition-all duration-200 shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:shadow-[0_0_25px_rgba(245,208,97,0.4)] cursor-pointer flex items-center justify-center gap-2"
+            disabled={item.stock === 0}
+            className={`flex-1 py-3.5 text-xs font-extrabold tracking-[0.15em] rounded transition-all duration-200 flex items-center justify-center gap-2 ${
+              item.stock === 0
+                ? "bg-zinc-800 text-zinc-500 border border-white/5 cursor-not-allowed opacity-60"
+                : "bg-[#d4af37] text-black hover:bg-[#f5d061] active:scale-[0.97] shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:shadow-[0_0_25px_rgba(245,208,97,0.4)] cursor-pointer"
+            }`}
           >
-            <ShoppingCartIcon className="w-4 h-4" /> AÑADIR AL CARRITO
+            <ShoppingCartIcon className="w-4 h-4" /> {item.stock === 0 ? "AGOTADO" : "AÑADIR AL CARRITO"}
           </button>
           <button
             onClick={() => onInspectItem(item)}

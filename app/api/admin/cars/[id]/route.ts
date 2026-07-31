@@ -43,6 +43,7 @@ export async function PUT(
           ...(body.acceleration !== undefined && { acceleration: body.acceleration }),
           ...(body.engine !== undefined && { engine: body.engine }),
           ...(body.status !== undefined && { status: body.status }),
+          ...(body.stock !== undefined && { stock: Number(body.stock) }),
           ...(body.image !== undefined && { image: body.image }),
           ...(body.description !== undefined && { description: body.description }),
         },
@@ -51,8 +52,9 @@ export async function PUT(
     );
 
     return NextResponse.json(updatedCar, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || "Failed to update hypercar record" }, { status: error.status || 500 });
+  } catch (error: unknown) {
+    const err = error as { message?: string; status?: number };
+    return NextResponse.json({ error: err.message || "Failed to update hypercar record" }, { status: err.status || 500 });
   }
 }
 
@@ -78,7 +80,8 @@ export async function DELETE(
     );
 
     return NextResponse.json({ success: true, message: `Hypercar ${id} deleted successfully` }, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || "Failed to delete hypercar record" }, { status: error.status || 500 });
+  } catch (error: unknown) {
+    const err = error as { message?: string; status?: number };
+    return NextResponse.json({ error: err.message || "Failed to delete hypercar record" }, { status: err.status || 500 });
   }
 }

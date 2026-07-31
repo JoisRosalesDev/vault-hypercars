@@ -3,30 +3,34 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { CatalogItem } from "../../types/catalog";
+import { CatalogItem, Brand, ItemStatus } from "../../types/catalog";
 import { CatalogFormData, ConfirmModalState, DashboardMetrics } from "../../types/admin";
 import { DashboardAnalytics } from "../../components/admin/DashboardAnalytics";
 import { CatalogTable } from "../../components/admin/CatalogTable";
 import { AdminModals } from "../../components/admin/AdminModals";
 import { LockIcon, AlertTriangleIcon } from "../../components/ui/Icons";
 
-function mapCarToCatalogItem(car: any): CatalogItem {
+function mapCarToCatalogItem(car: Record<string, unknown>): CatalogItem {
+  const hp = typeof car.hp === "number" ? car.hp : null;
+  const powerStr = hp ? `${hp.toLocaleString()} HP` : (typeof car.power === "string" ? car.power : "1,000 HP");
+
   return {
-    id: car.id,
-    name: car.name,
-    brand: car.brand,
-    year: String(car.year),
-    power: car.hp ? `${car.hp.toLocaleString()} HP` : (car.power || "1,000 HP"),
-    topSpeed: car.topSpeed,
+    id: String(car.id || ""),
+    name: String(car.name || ""),
+    brand: (car.brand as Brand) || "Bugatti",
+    year: String(car.year || ""),
+    power: powerStr,
+    topSpeed: String(car.topSpeed || ""),
     priceUSD: Number(car.price ?? car.priceUSD ?? 0),
-    status: car.status,
-    description: car.description || "",
-    image: car.image || "",
+    status: (car.status as ItemStatus) || "Disponible",
+    stock: Number(car.stock ?? 1),
+    description: String(car.description || ""),
+    image: String(car.image || ""),
     specs: {
-      power: car.hp ? `${car.hp.toLocaleString()} HP` : (car.power || "1,000 HP"),
-      topSpeed: car.topSpeed,
-      acceleration: car.acceleration,
-      engine: car.engine
+      power: powerStr,
+      topSpeed: String(car.topSpeed || ""),
+      acceleration: car.acceleration ? String(car.acceleration) : undefined,
+      engine: car.engine ? String(car.engine) : undefined
     }
   };
 }
@@ -36,6 +40,13 @@ export default function AdminDashboardPage() {
   const [items, setItems] = useState<CatalogItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [apiError, setApiError] = useState<string | null>(null);
+
+  const [metrics, setMetrics] = useState<DashboardMetrics>({
+    totalInventoryUSD: 0,
+    activeUnitsCount: 0,
+    monthlyRevenueUSD: 0,
+    conversionRate: 0
+  });
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -56,9 +67,22 @@ export default function AdminDashboardPage() {
     priceUSD: 3500000,
     currency: "USD",
     status: "Disponible",
+    stock: 1,
     description: "",
     image: ""
   });
+
+  const fetchAnalytics = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin/analytics");
+      if (res.ok) {
+        const data = await res.json();
+        setMetrics(data);
+      }
+    } catch (err: unknown) {
+      console.error("[Admin Analytics Fetch Error]:", err);
+    }
+  }, []);
 
   const fetchAdminCars = useCallback(async () => {
     setIsLoading(true);
@@ -76,17 +100,63 @@ export default function AdminDashboardPage() {
       const data = await res.json();
       const mapped = Array.isArray(data) ? data.map(mapCarToCatalogItem) : [];
       setItems(mapped);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("[Admin Cars Fetch Error]:", err);
-      setApiError(err.message || "Failed to load hypercars inventory.");
+      setApiError((err as Error).message || "Failed to load hypercars inventory.");
     } finally {
       setIsLoading(false);
     }
   }, [router]);
 
   useEffect(() => {
-    fetchAdminCars();
-  }, [fetchAdminCars]);
+    let isMounted = true;
+
+    const loadData = async () => {
+      setIsLoading(true);
+      setApiError(null);
+      try {
+        const [carsRes, analyticsRes] = await Promise.all([
+          fetch("/api/admin/cars"),
+          fetch("/api/admin/analytics")
+        ]);
+
+        if (carsRes.status === 401 || carsRes.status === 403) {
+          router.push("/admin/login?error=AccessDenied");
+          return;
+        }
+
+        if (carsRes.ok) {
+          const carsData = await carsRes.json();
+          if (isMounted) {
+            const mapped = Array.isArray(carsData) ? carsData.map(mapCarToCatalogItem) : [];
+            setItems(mapped);
+          }
+        }
+
+        if (analyticsRes.ok) {
+          const analyticsData = await analyticsRes.json();
+          if (isMounted) {
+            setMetrics(analyticsData);
+          }
+        }
+      } catch (err: unknown) {
+        console.error("[Admin Dashboard Fetch Error]:", err);
+        if (isMounted) {
+          setApiError((err as Error).message || "Failed to load dashboard data.");
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [router]);
 
   const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -124,6 +194,7 @@ export default function AdminDashboardPage() {
           acceleration: "0-100 km/h en 2.5s",
           engine: "V12 Hybrid",
           status: formData.status,
+          stock: Number(formData.stock ?? 1),
           description: formData.description || "Descripción exclusiva del vehículo.",
           image: formData.image || ""
         };
@@ -147,6 +218,7 @@ export default function AdminDashboardPage() {
         setIsCreateModalOpen(false);
         resetForm();
         await fetchAdminCars();
+        await fetchAnalytics();
       } else if (action === "update" && editingItem) {
         const payload = {
           name: formData.name,
@@ -156,6 +228,7 @@ export default function AdminDashboardPage() {
           hp: parsedHp,
           topSpeed: formData.topSpeed,
           status: formData.status,
+          stock: Number(formData.stock ?? 1),
           description: formData.description,
           image: formData.image
         };
@@ -179,6 +252,7 @@ export default function AdminDashboardPage() {
         setIsEditModalOpen(false);
         resetForm();
         await fetchAdminCars();
+        await fetchAnalytics();
       } else if (action === "delete" && targetItem) {
         const res = await fetch(`/api/admin/cars/${targetItem.id}`, {
           method: "DELETE"
@@ -195,10 +269,11 @@ export default function AdminDashboardPage() {
         }
 
         await fetchAdminCars();
+        await fetchAnalytics();
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("[Admin Action Error]:", err);
-      setApiError(err.message || "Action failed.");
+      setApiError((err as Error).message || "Action failed.");
     }
   };
 
@@ -213,6 +288,7 @@ export default function AdminDashboardPage() {
       priceUSD: 3500000,
       currency: "USD",
       status: "Disponible",
+      stock: 1,
       description: "",
       image: ""
     });
@@ -230,6 +306,7 @@ export default function AdminDashboardPage() {
       priceUSD: item.priceUSD,
       currency: "USD",
       status: item.status,
+      stock: item.stock,
       description: item.description,
       image: item.image
     });
@@ -241,30 +318,21 @@ export default function AdminDashboardPage() {
     setIsCreateModalOpen(true);
   };
 
-  const totalInventoryUSD = items.reduce((acc, i) => acc + i.priceUSD, 0);
-
-  const metrics: DashboardMetrics = {
-    totalInventoryUSD,
-    activeUnitsCount: items.length,
-    monthlyRevenueUSD: 12400000,
-    conversionRate: 24.8
-  };
-
   return (
     <div className="min-h-screen bg-[#08080a] text-white font-sans selection:bg-[#f5d061] selection:text-black pb-20">
       {/* Admin Top Header */}
-      <header className="border-b border-white/10 bg-[#0c0c10] px-8 py-6 flex justify-between items-center">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="flex flex-col">
+      <header className="border-b border-white/10 bg-[#0c0c10] px-4 sm:px-8 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 shrink-0">
+          <Link href="/" className="flex flex-col shrink-0">
             <span className="text-xl font-black tracking-[0.25em] text-[#f5d061]">VAULT</span>
             <span className="text-[8px] tracking-[0.4em] text-zinc-400">HYPERCARS ADMIN</span>
           </Link>
-          <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold flex items-center gap-1.5">
+          <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold flex items-center gap-1.5 shrink-0">
             <LockIcon className="w-3.5 h-3.5" /> PANEL DE ADMINISTRACIÓN
           </span>
         </div>
 
-        <Link href="/" className="text-xs text-zinc-400 hover:text-white font-semibold">
+        <Link href="/" className="text-xs text-zinc-400 hover:text-white font-semibold shrink-0">
           CERRAR SESIÓN →
         </Link>
       </header>

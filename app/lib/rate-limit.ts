@@ -20,7 +20,7 @@ if (typeof setInterval !== "undefined") {
 
   // Allow process termination in Node environment without hanging on timer
   if (cleanupInterval && typeof cleanupInterval === "object" && "unref" in cleanupInterval) {
-    (cleanupInterval as any).unref();
+    (cleanupInterval as unknown as { unref: () => void }).unref();
   }
 }
 

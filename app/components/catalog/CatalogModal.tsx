@@ -81,6 +81,12 @@ export function CatalogModal({ item, onClose, onAddToCart }: CatalogModalProps) 
             </div>
           )}
           <div className="flex justify-between text-sm">
+            <span className="text-zinc-400">Unidades en Inventario:</span>
+            <span className={`font-bold ${item.stock > 0 ? "text-emerald-400" : "text-rose-400"}`}>
+              {item.stock > 0 ? `${item.stock} u.` : "Agotado (0 u.)"}
+            </span>
+          </div>
+          <div className="flex justify-between text-sm">
             <span className="text-zinc-400">Precio Oficial:</span>
             <span className="font-bold text-white">{formatPrice(item.priceUSD)}</span>
           </div>
@@ -88,9 +94,14 @@ export function CatalogModal({ item, onClose, onAddToCart }: CatalogModalProps) 
 
         <button
           onClick={handleAdd}
-          className="w-full py-4 bg-[#d4af37] text-black text-xs font-extrabold tracking-[0.2em] rounded hover:bg-[#f5d061] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] cursor-pointer flex items-center justify-center gap-2"
+          disabled={item.stock === 0}
+          className={`w-full py-4 text-xs font-extrabold tracking-[0.2em] rounded transition-all flex items-center justify-center gap-2 ${
+            item.stock === 0
+              ? "bg-zinc-800 text-zinc-500 border border-white/5 cursor-not-allowed opacity-60"
+              : "bg-[#d4af37] text-black hover:bg-[#f5d061] shadow-[0_0_20px_rgba(212,175,55,0.3)] cursor-pointer"
+          }`}
         >
-          <ShoppingCartIcon className="w-4 h-4" /> COMPRAR AHORA Y AÑADIR AL CARRITO
+          <ShoppingCartIcon className="w-4 h-4" /> {item.stock === 0 ? "AGOTADO" : "COMPRAR AHORA Y AÑADIR AL CARRITO"}
         </button>
       </div>
     </div>

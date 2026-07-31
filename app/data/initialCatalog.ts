@@ -10,6 +10,7 @@ export const initialCatalogItems: CatalogItem[] = [
     topSpeed: "445 km/h",
     priceUSD: 4100000,
     status: "Disponible",
+    stock: 2,
     description: "Motor V16 atmosférico de 8.3 litros combinado con 3 motores eléctricos e ingeniería analógica de relojería suiza.",
     image: ""
   },
@@ -22,6 +23,7 @@ export const initialCatalogItems: CatalogItem[] = [
     topSpeed: "501 km/h",
     priceUSD: 4400000,
     status: "Unidad Final",
+    stock: 1,
     description: "Desarrollado exclusivamente para circuito. Carrocería radical con peso de tan solo 1,240 kg.",
     image: ""
   },
@@ -34,6 +36,7 @@ export const initialCatalogItems: CatalogItem[] = [
     topSpeed: "350 km/h",
     priceUSD: 600000,
     status: "Disponible",
+    stock: 2,
     description: "El primer súper deportivo híbrido V12 HPEV de Sant'Agata Bolognese con tracción integral vectorial.",
     image: ""
   },
@@ -46,6 +49,7 @@ export const initialCatalogItems: CatalogItem[] = [
     topSpeed: "355 km/h",
     priceUSD: 3700000,
     status: "Unidad Final",
+    stock: 1,
     description: "Primer súper deportivo con tecnología híbrida impulsada por supercondensadores de alta densidad de energía.",
     image: ""
   },
@@ -58,6 +62,7 @@ export const initialCatalogItems: CatalogItem[] = [
     topSpeed: "340 km/h",
     priceUSD: 2250000,
     status: "Disponible",
+    stock: 2,
     description: "Motor V12 de aspiración natural a 9,500 RPM. Diseño aerodinámico escultural sin componentes activos.",
     image: ""
   },
@@ -70,6 +75,7 @@ export const initialCatalogItems: CatalogItem[] = [
     topSpeed: "320 km/h",
     priceUSD: 890000,
     status: "Disponible",
+    stock: 2,
     description: "Primera versión XX homologada para carretera. Aerodinámica de carrera de resistencia con alerón fijo posterior.",
     image: ""
   }

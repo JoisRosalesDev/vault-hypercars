@@ -13,6 +13,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.0s",
     engine: "Motor V16 8.3L Atmosférico + 3 Motores Eléctricos",
     status: "Disponible",
+    stock: 2,
     image: "",
     description: "Motor V16 atmosférico de 8.3 litros combinado con 3 motores eléctricos e ingeniería analógica de relojería suiza."
   },
@@ -26,6 +27,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.3s",
     engine: "W16 8.0L Cuadriturbo",
     status: "Disponible",
+    stock: 3,
     image: "",
     description: "Configuración ágil optimizada para aceleración y paso por curva con alerón trasero fijo de 1.9 metros."
   },
@@ -39,6 +41,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.4s",
     engine: "W16 8.0L Cuadriturbo",
     status: "Unidad Final",
+    stock: 1,
     image: "",
     description: "Edición limitada a 40 unidades enfocado en la máxima carga aerodinámica y aceleración lateral."
   },
@@ -52,6 +55,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.5s",
     engine: "V12 6.5L + 3 Motores Eléctricos (HPEV)",
     status: "Disponible",
+    stock: 2,
     image: "",
     description: "El primer súper deportivo híbrido V12 HPEV de Sant'Agata Bolognese con tracción integral vectorial."
   },
@@ -65,6 +69,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.8s",
     engine: "V12 6.5L + Supercondensador 48V",
     status: "Unidad Final",
+    stock: 1,
     image: "",
     description: "Primer súper deportivo con tecnología híbrida impulsada por supercondensadores de alta densidad de energía."
   },
@@ -78,6 +83,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.9s",
     engine: "V12 6.5L Atmosférico",
     status: "Unidad Final",
+    stock: 1,
     image: "",
     description: "Prototipo de carreras homologado para calle creado para celebrar el 50 aniversario de Lamborghini."
   },
@@ -91,6 +97,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.3s",
     engine: "V8 4.0L Biturbo + 3 Motores Eléctricos",
     status: "Disponible",
+    stock: 2,
     image: "",
     description: "Primera versión XX homologada para carretera. Aerodinámica de carrera de resistencia con alerón fijo posterior."
   },
@@ -104,6 +111,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.85s",
     engine: "V12 6.5L Atmosférico (F140HC)",
     status: "Disponible",
+    stock: 2,
     image: "",
     description: "Motor V12 de aspiración natural a 9,500 RPM. Diseño aerodinámico escultural sin componentes activos."
   },
@@ -117,6 +125,7 @@ const hypercars = [
     acceleration: "0-100 km/h en 2.6s",
     engine: "V12 6.3L + Sistema HY-KERS",
     status: "Unidad Final",
+    stock: 1,
     image: "",
     description: "El mítico hiperauto de Maranello que introdujo la tecnología híbrida de Fórmula 1 a los vehículos de producción."
   }

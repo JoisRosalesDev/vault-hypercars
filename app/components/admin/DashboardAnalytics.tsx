@@ -29,7 +29,7 @@ export function DashboardAnalytics({ metrics }: DashboardAnalyticsProps) {
       <div className="p-6 rounded-2xl bg-[#0d0d12] border border-white/10">
         <span className="text-xs text-zinc-500 font-semibold tracking-wider block mb-1">VENTAS DEL MES</span>
         <div className="text-3xl font-black text-white">${revenueInMillions}M USD</div>
-        <span className="text-[11px] text-emerald-400 mt-2 block font-medium">3 Ventas confirmadas</span>
+        <span className="text-[11px] text-emerald-400 mt-2 block font-medium">Ingresos de órdenes completadas</span>
       </div>
 
       <div className="p-6 rounded-2xl bg-[#0d0d12] border border-white/10">

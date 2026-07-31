@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 import { checkRateLimit } from "@/app/lib/rate-limit";
 import { withTimeout } from "@/app/lib/timeout";
+import { Prisma } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 10;
@@ -16,9 +17,12 @@ export async function GET(req: NextRequest) {
     const brandFilter = searchParams.get("brand");
     const statusFilter = searchParams.get("status");
 
-    const whereClause: Record<string, string> = {};
+    const whereClause: Prisma.HypercarWhereInput = {};
     if (brandFilter && brandFilter.toLowerCase() !== "all") {
-      whereClause.brand = brandFilter;
+      whereClause.brand = {
+        equals: brandFilter,
+        mode: "insensitive",
+      };
     }
     if (statusFilter) {
       whereClause.status = statusFilter;
@@ -35,11 +39,12 @@ export async function GET(req: NextRequest) {
     );
 
     return NextResponse.json(cars, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const err = error as { message?: string; status?: number };
     console.error("[API GET /api/catalog Error]:", error);
     return NextResponse.json(
-      { error: error.message || "Failed to fetch catalog inventory" },
-      { status: error.status || 500 }
+      { error: err.message || "Failed to fetch catalog inventory" },
+      { status: err.status || 500 }
     );
   }
 }

@@ -15,11 +15,47 @@ export function CartDrawer() {
     isCartOpen,
     setIsCartOpen,
     formatPrice,
-    clearCart,
     totalUSD
   } = useHypercarCart();
 
+  const [isProcessing, setIsProcessing] = React.useState(false);
+  const [checkoutError, setCheckoutError] = React.useState<string | null>(null);
+
   if (!isCartOpen) return null;
+
+  const handleCheckout = async () => {
+    setIsProcessing(true);
+    setCheckoutError(null);
+    try {
+      const idempotencyKey = crypto.randomUUID();
+      const payload = {
+        items: cart.map((item) => ({ id: item.id, quantity: item.quantity })),
+        idempotencyKey,
+      };
+
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Error al iniciar la sesión de Stripe Checkout.");
+      }
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("No se obtuvo la URL de redirección de Stripe.");
+      }
+    } catch (err: unknown) {
+      const errorMsg = (err as Error).message;
+      console.error("[Checkout Error]:", err);
+      setCheckoutError(errorMsg || "Ocurrió un error al iniciar la compra.");
+      setIsProcessing(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex justify-end animate-fadeIn">
@@ -85,20 +121,31 @@ export function CartDrawer() {
         {/* Footer Summary */}
         {cart.length > 0 && (
           <div className="pt-6 border-t border-white/10 space-y-4">
+            {checkoutError && (
+              <div className="p-3 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium">
+                {checkoutError}
+              </div>
+            )}
             <div className="flex justify-between items-end">
               <span className="text-xs text-zinc-400 tracking-wider">TOTAL A PAGAR:</span>
               <span className="text-2xl font-black text-[#f5d061]">{formatPrice(totalUSD)}</span>
             </div>
 
             <button
-              onClick={() => {
-                alert(`Solicitud de adquisición VIP procesada para ${formatPrice(totalUSD)}.`);
-                clearCart();
-                setIsCartOpen(false);
-              }}
-              className="w-full py-4 bg-[#d4af37] text-black text-xs font-extrabold tracking-[0.2em] rounded-md hover:bg-[#f5d061] hover:scale-[1.02] transition-all shadow-[0_0_25px_rgba(212,175,55,0.3)] cursor-pointer"
+              onClick={handleCheckout}
+              disabled={isProcessing}
+              className={`w-full py-4 bg-[#d4af37] text-black text-xs font-extrabold tracking-[0.2em] rounded-md transition-all shadow-[0_0_25px_rgba(212,175,55,0.3)] flex items-center justify-center gap-2 ${
+                isProcessing ? "opacity-60 cursor-not-allowed" : "hover:bg-[#f5d061] hover:scale-[1.02] cursor-pointer"
+              }`}
             >
-              FINALIZAR COMPRA VIP
+              {isProcessing ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                  PROCESANDO PAGO...
+                </>
+              ) : (
+                "FINALIZAR COMPRA VIP"
+              )}
             </button>
           </div>
         )}

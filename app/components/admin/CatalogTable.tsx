@@ -37,6 +37,7 @@ export function CatalogTable({
               <th className="py-4 px-4">POTENCIA</th>
               <th className="py-4 px-4">PRECIO (USD)</th>
               <th className="py-4 px-4">ESTADO</th>
+              <th className="py-4 px-4">STOCK</th>
               <th className="py-4 px-4 text-right">ACCIONES</th>
             </tr>
           </thead>
@@ -53,6 +54,17 @@ export function CatalogTable({
                 <td className="py-4 px-4">
                   <span className="px-2.5 py-1 rounded text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                     {item.status}
+                  </span>
+                </td>
+                <td className="py-4 px-4">
+                  <span
+                    className={`px-2.5 py-1 rounded text-xs font-bold border ${
+                      item.stock === 0
+                        ? "bg-rose-500/10 text-rose-400 border-rose-500/20"
+                        : "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                    }`}
+                  >
+                    {item.stock} u.
                   </span>
                 </td>
                 <td className="py-4 px-4 text-right space-x-2">

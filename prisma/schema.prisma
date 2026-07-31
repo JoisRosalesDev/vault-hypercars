@@ -10,23 +10,54 @@ generator client {
 }
 
 model Hypercar {
-  id           String   @id @default(cuid())
+  id           String      @id @default(cuid())
   name         String
-  brand        String   // "Bugatti" | "Lamborghini" | "Ferrari"
+  brand        String      // "Bugatti" | "Lamborghini" | "Ferrari"
   year         Int
-  price        Float    // Base price in USD
-  hp           Int      // Horsepower output
-  topSpeed     String   // e.g. "445 km/h"
-  acceleration String   // e.g. "0-100 km/h en 2.0s"
-  engine       String   // e.g. "V16 8.3L Atmosférico"
-  status       String   // "Disponible" | "Unidad Final" | "Reservado" | "Vendido"
-  image        String   // URL or local asset path
-  description  String   @db.Text
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  price        Float       // Base price in USD
+  hp           Int         // Horsepower output
+  topSpeed     String      // e.g. "445 km/h"
+  acceleration String      // e.g. "0-100 km/h en 2.0s"
+  engine       String      // e.g. "V16 8.3L Atmosférico"
+  status       String      // "Disponible" | "Unidad Final" | "Reservado" | "Vendido"
+  stock        Int         @default(1)
+  image        String      // URL or local asset path
+  description  String      @db.Text
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  orderItems   OrderItem[]
 
   @@index([brand])
   @@index([status])
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  stripeSessionId String?     @unique
+  idempotencyKey  String      @unique
+  customerEmail   String?
+  totalAmount     Float
+  currency        String      @default("usd")
+  status          String      // "PENDING" | "COMPLETED" | "EXPIRED" | "CANCELLED"
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  items           OrderItem[]
+
+  @@index([stripeSessionId])
+  @@index([status])
+}
+
+model OrderItem {
+  id         String   @id @default(cuid())
+  orderId    String
+  hypercarId String
+  quantity   Int      @default(1)
+  priceUSD   Float
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  hypercar   Hypercar @relation(fields: [hypercarId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([hypercarId])
 }
 
 // NextAuth Required Models

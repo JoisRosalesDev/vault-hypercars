@@ -19,3 +19,18 @@ export interface CartItem {
 }
 
 export type AddToCartInput = Omit<CartItem, "quantity">;
+
+export interface CheckoutItemPayload {
+  id: string;
+  quantity: number;
+}
+
+export interface CheckoutPayload {
+  items: CheckoutItemPayload[];
+  idempotencyKey: string;
+}
+
+export interface CheckoutResponse {
+  url: string;
+  sessionId: string;
+}
