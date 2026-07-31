@@ -1,0 +1,2918 @@
+{
+  "version": "0.8.2",
+  "name": "OpenPencil CLI Session",
+  "children": [
+    {
+      "type": "frame",
+      "id": "n1",
+      "name": "HTML Import",
+      "width": 1440.0,
+      "height": "fit_content",
+      "layout": "vertical",
+      "fill": [
+        {
+          "type": "solid",
+          "color": "#ffffff"
+        }
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "n2",
+          "name": "div",
+          "width": 1440.0,
+          "height": 900.0,
+          "layout": "vertical",
+          "padding": [
+            40.0,
+            80.0,
+            40.0,
+            80.0
+          ],
+          "clipContent": true,
+          "fill": [
+            {
+              "type": "solid",
+              "color": "#08080a"
+            }
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "n3",
+              "name": "div",
+              "x": 80.0,
+              "y": 840.0,
+              "constraints": {
+                "h": "left_right",
+                "v": "bottom"
+              },
+              "width": 1280.0,
+              "height": "fit_content",
+              "layout": "horizontal",
+              "gap": 80.0,
+              "padding": [
+                33.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "stroke": {
+                "thickness": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "align": "inside",
+                "fill": [
+                  {
+                    "type": "solid",
+                    "color": "#ffffff14"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n4",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n5",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n6",
+                          "name": "Text",
+                          "content": "1,950 HP",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 36.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n7",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        4.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n8",
+                          "name": "Text",
+                          "content": "QUAD-TURBO V12 HYBRID",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 12.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#70707a"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n9",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n10",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n11",
+                          "name": "Text",
+                          "content": "1.85s",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 36.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n12",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        4.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n13",
+                          "name": "Text",
+                          "content": "0-100 KM/H ACCELERATION",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 12.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#70707a"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n14",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n15",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n16",
+                          "name": "Text",
+                          "content": "420+ KM/H",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 36.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n17",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        4.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n18",
+                          "name": "Text",
+                          "content": "TOP SPEED",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 12.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#70707a"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n19",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n20",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n21",
+                          "name": "Text",
+                          "content": "9 / 10",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 36.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#d4af37"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n22",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        4.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n23",
+                          "name": "Text",
+                          "content": "ALLOCATIONS REMAINING",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 12.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#70707a"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n24",
+              "name": "div",
+              "x": 940.0,
+              "y": -150.0,
+              "constraints": {
+                "h": "right",
+                "v": "top"
+              },
+              "width": 600.0,
+              "height": 600.0,
+              "layout": "vertical",
+              "cornerRadius": 300.0,
+              "fill": [
+                {
+                  "type": "radial_gradient",
+                  "stops": [
+                    {
+                      "offset": 0.0,
+                      "color": "#d4af3726"
+                    },
+                    {
+                      "offset": 0.7,
+                      "color": "#08080a00"
+                    }
+                  ]
+                }
+              ],
+              "children": []
+            },
+            {
+              "type": "frame",
+              "id": "n25",
+              "name": "div",
+              "width": "fill_container",
+              "height": "fit_content",
+              "layout": "horizontal",
+              "padding": [
+                0.0,
+                0.0,
+                25.0,
+                0.0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "stroke": {
+                "thickness": [
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "align": "inside",
+                "fill": [
+                  {
+                    "type": "solid",
+                    "color": "#ffffff14"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n26",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n27",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n28",
+                          "name": "Text",
+                          "content": "VAULT",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 24.0,
+                          "fontWeight": 900,
+                          "letterSpacing": 6.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n29",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n30",
+                          "name": "Text",
+                          "content": "HYPERCARS",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 9.0,
+                          "letterSpacing": 4.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#8a8a93"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n31",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "gap": 40.0,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n32",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n33",
+                          "name": "Text",
+                          "content": "MODELS",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 14.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n34",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n35",
+                          "name": "Text",
+                          "content": "COLLECTION",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 14.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#b0b0ba"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n36",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n37",
+                          "name": "Text",
+                          "content": "CUSTOM BUILDS",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 14.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#b0b0ba"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n38",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n39",
+                          "name": "Text",
+                          "content": "EXPERIENCE",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 14.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#b0b0ba"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n40",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    13.0,
+                    29.0,
+                    13.0,
+                    29.0
+                  ],
+                  "cornerRadius": 4.0,
+                  "stroke": {
+                    "thickness": 1.0,
+                    "align": "inside",
+                    "fill": [
+                      {
+                        "type": "solid",
+                        "color": "#d4af37"
+                      }
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n41",
+                      "name": "Text",
+                      "content": "RESERVE ALLOCATION",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 12.0,
+                      "fontWeight": 700,
+                      "letterSpacing": 2.0,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#f5d061"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n42",
+              "name": "div",
+              "width": 720.0,
+              "height": "fit_content",
+              "maxWidth": 720.0,
+              "layout": "vertical",
+              "padding": [
+                100.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n43",
+                  "name": "inline-row",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n44",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        7.0,
+                        17.0,
+                        7.0,
+                        17.0
+                      ],
+                      "cornerRadius": 20.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#d4af371a"
+                        }
+                      ],
+                      "stroke": {
+                        "thickness": 1.0,
+                        "align": "inside",
+                        "fill": [
+                          {
+                            "type": "solid",
+                            "color": "#d4af374d"
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n45",
+                          "name": "Text",
+                          "content": "LIMITED EDITION — V12 HYBRID",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 11.0,
+                          "letterSpacing": 3.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n46",
+                  "name": "h1",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    0.0,
+                    0.0,
+                    24.0,
+                    0.0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n47",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "content": "THE PINNACLE OF AUTOMOTIVE ENGINEERING",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 64.0,
+                      "fontWeight": 800,
+                      "letterSpacing": -1.0,
+                      "lineHeight": 1.1,
+                      "textGrowth": "fixed-width",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#ffffff"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n48",
+                  "name": "p",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    16.0,
+                    0.0,
+                    40.0,
+                    0.0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n49",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "content": "Hand-crafted hypercars engineered for unprecedented aerodynamic efficiency, raw power, and uncompromising bespoke luxury.",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 18.0,
+                      "lineHeight": 1.6,
+                      "textGrowth": "fixed-width",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#9a9ab0"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n50",
+                  "name": "div",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "gap": 20.0,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n51",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        18.0,
+                        40.0,
+                        18.0,
+                        40.0
+                      ],
+                      "cornerRadius": 4.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#d4af37"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n52",
+                          "name": "Text",
+                          "content": "EXPLORE MODELS",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 800,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#08080a"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n53",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        19.0,
+                        37.0,
+                        19.0,
+                        37.0
+                      ],
+                      "cornerRadius": 4.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#ffffff0d"
+                        }
+                      ],
+                      "stroke": {
+                        "thickness": 1.0,
+                        "align": "inside",
+                        "fill": [
+                          {
+                            "type": "solid",
+                            "color": "#ffffff26"
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n54",
+                          "name": "Text",
+                          "content": "WATCH FILM",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "n55",
+      "name": "HTML Import",
+      "width": 1440.0,
+      "height": "fit_content",
+      "layout": "vertical",
+      "fill": [
+        {
+          "type": "solid",
+          "color": "#ffffff"
+        }
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "n56",
+          "name": "div",
+          "width": 1440.0,
+          "height": 1080.0,
+          "layout": "vertical",
+          "padding": [
+            40.0,
+            80.0,
+            40.0,
+            80.0
+          ],
+          "justifyContent": "space_between",
+          "clipContent": true,
+          "fill": [
+            {
+              "type": "solid",
+              "color": "#08080a"
+            }
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "n57",
+              "name": "div",
+              "x": 940.0,
+              "y": -150.0,
+              "constraints": {
+                "h": "right",
+                "v": "top"
+              },
+              "width": 600.0,
+              "height": 600.0,
+              "layout": "vertical",
+              "cornerRadius": 300.0,
+              "fill": [
+                {
+                  "type": "radial_gradient",
+                  "stops": [
+                    {
+                      "offset": 0.0,
+                      "color": "#d4af3726"
+                    },
+                    {
+                      "offset": 0.7,
+                      "color": "#08080a00"
+                    }
+                  ]
+                }
+              ],
+              "children": []
+            },
+            {
+              "type": "frame",
+              "id": "n58",
+              "name": "div",
+              "width": "fill_container",
+              "height": "fit_content",
+              "layout": "horizontal",
+              "padding": [
+                0.0,
+                0.0,
+                25.0,
+                0.0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "stroke": {
+                "thickness": [
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "align": "inside",
+                "fill": [
+                  {
+                    "type": "solid",
+                    "color": "#ffffff14"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n59",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n60",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n61",
+                          "name": "Text",
+                          "content": "VAULT",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 24.0,
+                          "fontWeight": 900,
+                          "letterSpacing": 6.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n62",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n63",
+                          "name": "Text",
+                          "content": "HYPERCARS",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 9.0,
+                          "letterSpacing": 4.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#8a8a93"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n64",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "gap": 40.0,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n65",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n66",
+                          "name": "Text",
+                          "content": "HOME",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n67",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n68",
+                          "name": "Text",
+                          "content": "SHOWROOM",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#b0b0ba"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n69",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n70",
+                          "name": "Text",
+                          "content": "CATÁLOGO",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#b0b0ba"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n71",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    13.0,
+                    29.0,
+                    13.0,
+                    29.0
+                  ],
+                  "cornerRadius": 4.0,
+                  "stroke": {
+                    "thickness": 1.0,
+                    "align": "inside",
+                    "fill": [
+                      {
+                        "type": "solid",
+                        "color": "#d4af37"
+                      }
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n72",
+                      "name": "Text",
+                      "content": "RESERVAR ASIGNACIÓN",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 12.0,
+                      "fontWeight": 700,
+                      "letterSpacing": 2.0,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#f5d061"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n73",
+              "name": "div",
+              "width": 760.0,
+              "height": "fit_content",
+              "maxWidth": 760.0,
+              "layout": "vertical",
+              "padding": [
+                60.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n74",
+                  "name": "inline-row",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n75",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        7.0,
+                        17.0,
+                        7.0,
+                        17.0
+                      ],
+                      "cornerRadius": 20.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#d4af371a"
+                        }
+                      ],
+                      "stroke": {
+                        "thickness": 1.0,
+                        "align": "inside",
+                        "fill": [
+                          {
+                            "type": "solid",
+                            "color": "#d4af374d"
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n76",
+                          "name": "Text",
+                          "content": "EDICIÓN LIMITADA — V12 HÍBRIDO",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 11.0,
+                          "letterSpacing": 3.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n77",
+                  "name": "h1",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    0.0,
+                    0.0,
+                    24.0,
+                    0.0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n78",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "content": "LA CÚSPIDE DE LA INGENIERÍA AUTOMOTRIZ",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 60.0,
+                      "fontWeight": 800,
+                      "letterSpacing": -1.0,
+                      "lineHeight": 1.1,
+                      "textGrowth": "fixed-width",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#ffffff"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n79",
+                  "name": "p",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    16.0,
+                    0.0,
+                    40.0,
+                    0.0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n80",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "content": "Hiperautos diseñados a mano para alcanzar una eficiencia aerodinámica sin precedentes, potencia pura y un lujo a la medida sin concesiones.",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 18.0,
+                      "lineHeight": 1.6,
+                      "textGrowth": "fixed-width",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#9a9ab0"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n81",
+                  "name": "div",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "gap": 20.0,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n82",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        18.0,
+                        40.0,
+                        18.0,
+                        40.0
+                      ],
+                      "cornerRadius": 4.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#d4af37"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n83",
+                          "name": "Text",
+                          "content": "EXPLORAR CATÁLOGO",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 800,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#08080a"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n84",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        19.0,
+                        37.0,
+                        19.0,
+                        37.0
+                      ],
+                      "cornerRadius": 4.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#ffffff0d"
+                        }
+                      ],
+                      "stroke": {
+                        "thickness": 1.0,
+                        "align": "inside",
+                        "fill": [
+                          {
+                            "type": "solid",
+                            "color": "#ffffff26"
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n85",
+                          "name": "Text",
+                          "content": "VER VIDEO",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n86",
+              "name": "div",
+              "width": "fill_container",
+              "height": "fit_content",
+              "layout": "horizontal",
+              "gap": 80.0,
+              "padding": [
+                33.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "stroke": {
+                "thickness": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "align": "inside",
+                "fill": [
+                  {
+                    "type": "solid",
+                    "color": "#ffffff14"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n87",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n88",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n89",
+                          "name": "Text",
+                          "content": "1,950 HP",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 32.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n90",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        4.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n91",
+                          "name": "Text",
+                          "content": "MOTOR QUAD-TURBO V12 HÍBRIDO",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 11.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#70707a"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n92",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n93",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n94",
+                          "name": "Text",
+                          "content": "1.85s",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 32.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n95",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        4.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n96",
+                          "name": "Text",
+                          "content": "ACELERACIÓN 0-100 KM/H",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 11.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#70707a"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n97",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n98",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n99",
+                          "name": "Text",
+                          "content": "420+ KM/H",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 32.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n100",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        4.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n101",
+                          "name": "Text",
+                          "content": "VELOCIDAD MÁXIMA",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 11.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#70707a"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n102",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n103",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n104",
+                          "name": "Text",
+                          "content": "9 / 10",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 32.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#d4af37"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n105",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        4.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n106",
+                          "name": "Text",
+                          "content": "UNIDADES DISPONIBLES",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 11.0,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#70707a"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n107",
+              "name": "div",
+              "width": "fill_container",
+              "height": "fit_content",
+              "layout": "horizontal",
+              "padding": [
+                25.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "stroke": {
+                "thickness": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "align": "inside",
+                "fill": [
+                  {
+                    "type": "solid",
+                    "color": "#ffffff14"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n108",
+                  "name": "span",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n109",
+                      "name": "Text",
+                      "content": "© 2026 Vault Hypercars. Todos los derechos reservados.",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 12.0,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#60606a"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n110",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    9.0,
+                    21.0,
+                    9.0,
+                    21.0
+                  ],
+                  "cornerRadius": 4.0,
+                  "fill": [
+                    {
+                      "type": "solid",
+                      "color": "#ffffff0a"
+                    }
+                  ],
+                  "stroke": {
+                    "thickness": 1.0,
+                    "align": "inside",
+                    "fill": [
+                      {
+                        "type": "solid",
+                        "color": "#ffffff1a"
+                      }
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n111",
+                      "name": "Text",
+                      "content": "🔒 ACCESO ADMIN",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 11.0,
+                      "fontWeight": 600,
+                      "letterSpacing": 1.5,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#b0b0ba"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "n112",
+      "name": "HTML Import",
+      "width": 1440.0,
+      "height": "fit_content",
+      "layout": "vertical",
+      "fill": [
+        {
+          "type": "solid",
+          "color": "#ffffff"
+        }
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "n113",
+          "name": "div",
+          "width": 1440.0,
+          "height": "fit_content",
+          "layout": "vertical",
+          "gap": 80.0,
+          "padding": [
+            40.0,
+            80.0,
+            80.0,
+            80.0
+          ],
+          "fill": [
+            {
+              "type": "solid",
+              "color": "#08080a"
+            }
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "n114",
+              "name": "div",
+              "x": 940.0,
+              "y": -150.0,
+              "constraints": {
+                "h": "right",
+                "v": "top"
+              },
+              "width": 600.0,
+              "height": 600.0,
+              "layout": "vertical",
+              "cornerRadius": 300.0,
+              "fill": [
+                {
+                  "type": "radial_gradient",
+                  "stops": [
+                    {
+                      "offset": 0.0,
+                      "color": "#d4af3726"
+                    },
+                    {
+                      "offset": 0.7,
+                      "color": "#08080a00"
+                    }
+                  ]
+                }
+              ],
+              "children": []
+            },
+            {
+              "type": "frame",
+              "id": "n115",
+              "name": "div",
+              "width": "fill_container",
+              "height": "fit_content",
+              "layout": "horizontal",
+              "padding": [
+                0.0,
+                0.0,
+                25.0,
+                0.0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "stroke": {
+                "thickness": [
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "align": "inside",
+                "fill": [
+                  {
+                    "type": "solid",
+                    "color": "#ffffff14"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n116",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n117",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n118",
+                          "name": "Text",
+                          "content": "VAULT",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 24.0,
+                          "fontWeight": 900,
+                          "letterSpacing": 6.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n119",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n120",
+                          "name": "Text",
+                          "content": "HYPERCARS",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 9.0,
+                          "letterSpacing": 4.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#8a8a93"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n121",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "gap": 40.0,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n122",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n123",
+                          "name": "Text",
+                          "content": "HOME",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n124",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n125",
+                          "name": "Text",
+                          "content": "SHOWROOM",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#b0b0ba"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n126",
+                      "name": "span",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n127",
+                          "name": "Text",
+                          "content": "CATÁLOGO",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#b0b0ba"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n128",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    13.0,
+                    29.0,
+                    13.0,
+                    29.0
+                  ],
+                  "cornerRadius": 4.0,
+                  "stroke": {
+                    "thickness": 1.0,
+                    "align": "inside",
+                    "fill": [
+                      {
+                        "type": "solid",
+                        "color": "#d4af37"
+                      }
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n129",
+                      "name": "Text",
+                      "content": "RESERVAR ASIGNACIÓN",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 12.0,
+                      "fontWeight": 700,
+                      "letterSpacing": 2.0,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#f5d061"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n130",
+              "name": "div",
+              "width": 760.0,
+              "height": "fit_content",
+              "maxWidth": 760.0,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n131",
+                  "name": "inline-row",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n132",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        7.0,
+                        17.0,
+                        7.0,
+                        17.0
+                      ],
+                      "cornerRadius": 20.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#d4af371a"
+                        }
+                      ],
+                      "stroke": {
+                        "thickness": 1.0,
+                        "align": "inside",
+                        "fill": [
+                          {
+                            "type": "solid",
+                            "color": "#d4af374d"
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n133",
+                          "name": "Text",
+                          "content": "EDICIÓN LIMITADA — V12 HÍBRIDO",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 11.0,
+                          "letterSpacing": 3.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n134",
+                  "name": "h1",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    0.0,
+                    0.0,
+                    24.0,
+                    0.0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n135",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "content": "LA CÚSPIDE DE LA INGENIERÍA AUTOMOTRIZ",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 56.0,
+                      "fontWeight": 800,
+                      "letterSpacing": -1.0,
+                      "lineHeight": 1.1,
+                      "textGrowth": "fixed-width",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#ffffff"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n136",
+                  "name": "p",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    16.0,
+                    0.0,
+                    40.0,
+                    0.0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n137",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "content": "Hiperautos diseñados a mano para alcanzar una eficiencia aerodinámica sin precedentes, potencia pura y un lujo a la medida sin concesiones.",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 18.0,
+                      "lineHeight": 1.6,
+                      "textGrowth": "fixed-width",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#9a9ab0"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n138",
+                  "name": "div",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "gap": 20.0,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n139",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        18.0,
+                        40.0,
+                        18.0,
+                        40.0
+                      ],
+                      "cornerRadius": 4.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#d4af37"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n140",
+                          "name": "Text",
+                          "content": "EXPLORAR CATÁLOGO",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 800,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#08080a"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n141",
+                      "name": "div",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        19.0,
+                        37.0,
+                        19.0,
+                        37.0
+                      ],
+                      "cornerRadius": 4.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#ffffff0d"
+                        }
+                      ],
+                      "stroke": {
+                        "thickness": 1.0,
+                        "align": "inside",
+                        "fill": [
+                          {
+                            "type": "solid",
+                            "color": "#ffffff26"
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n142",
+                          "name": "Text",
+                          "content": "VER SHOWROOM",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 13.0,
+                          "fontWeight": 600,
+                          "letterSpacing": 2.0,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n143",
+              "name": "div",
+              "width": "fill_container",
+              "height": "fit_content",
+              "layout": "horizontal",
+              "padding": 41.0,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "cornerRadius": 16.0,
+              "fill": [
+                {
+                  "type": "solid",
+                  "color": "#0d0d12"
+                }
+              ],
+              "stroke": {
+                "thickness": 1.0,
+                "align": "inside",
+                "fill": [
+                  {
+                    "type": "solid",
+                    "color": "#ffffff1a"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n144",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n145",
+                      "name": "Text",
+                      "content": [
+                        {
+                          "text": "EXPERIENCIA INMERSIVA 360°",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 11.0,
+                          "fontWeight": 700,
+                          "fill": "#f5d061"
+                        }
+                      ],
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 11.0,
+                      "fontWeight": 700,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#f5d061"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n146",
+                      "name": "h2",
+                      "width": "fit_content",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": [
+                        8.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n147",
+                          "name": "Text",
+                          "content": "SHOWROOM VIRTUAL VIP",
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 32.0,
+                          "fontWeight": 800,
+                          "textGrowth": "auto",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n148",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    14.0,
+                    28.0,
+                    14.0,
+                    28.0
+                  ],
+                  "cornerRadius": 4.0,
+                  "fill": [
+                    {
+                      "type": "solid",
+                      "color": "#d4af37"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n149",
+                      "name": "Text",
+                      "content": "INGRESAR AL SHOWROOM",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 12.0,
+                      "fontWeight": 800,
+                      "letterSpacing": 2.0,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#08080a"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n150",
+              "name": "div",
+              "width": "fill_container",
+              "height": "fit_content",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n151",
+                  "name": "h2",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    20.0,
+                    0.0,
+                    24.0,
+                    0.0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n152",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "content": "COLECCIÓN DESTACADA",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 32.0,
+                      "fontWeight": 800,
+                      "textGrowth": "fixed-width",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#ffffff"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n153",
+                  "name": "div",
+                  "width": "fill_container",
+                  "height": "fit_content",
+                  "layout": "horizontal",
+                  "gap": 24.0,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n154",
+                      "name": "div",
+                      "width": "fill_container",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": 25.0,
+                      "cornerRadius": 12.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#0d0d12"
+                        }
+                      ],
+                      "stroke": {
+                        "thickness": 1.0,
+                        "align": "inside",
+                        "fill": [
+                          {
+                            "type": "solid",
+                            "color": "#ffffff1a"
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n155",
+                          "name": "Text",
+                          "width": "fill_container",
+                          "content": [
+                            {
+                              "text": "V12 HÍBRIDO",
+                              "fontFamily": "system-ui, -apple-system, sans-serif",
+                              "fontSize": 10.0,
+                              "fill": "#f5d061"
+                            }
+                          ],
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 10.0,
+                          "textGrowth": "fixed-width",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "n156",
+                          "name": "h3",
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "layout": "vertical",
+                          "padding": [
+                            8.0,
+                            0.0,
+                            8.0,
+                            0.0
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "n157",
+                              "name": "Text",
+                              "width": "fill_container",
+                              "content": "Vault Apex V12",
+                              "fontFamily": "system-ui, -apple-system, sans-serif",
+                              "fontSize": 20.0,
+                              "fontWeight": 800,
+                              "textGrowth": "fixed-width",
+                              "fill": [
+                                {
+                                  "type": "solid",
+                                  "color": "#ffffff"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "n158",
+                          "name": "p",
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "n159",
+                              "name": "Text",
+                              "width": "fill_container",
+                              "content": "1,950 HP",
+                              "fontFamily": "system-ui, -apple-system, sans-serif",
+                              "fontSize": 24.0,
+                              "fontWeight": 900,
+                              "textGrowth": "fixed-width",
+                              "fill": [
+                                {
+                                  "type": "solid",
+                                  "color": "#ffffff"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n160",
+                      "name": "div",
+                      "width": "fill_container",
+                      "height": "fit_content",
+                      "layout": "vertical",
+                      "padding": 25.0,
+                      "cornerRadius": 12.0,
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#0d0d12"
+                        }
+                      ],
+                      "stroke": {
+                        "thickness": 1.0,
+                        "align": "inside",
+                        "fill": [
+                          {
+                            "type": "solid",
+                            "color": "#ffffff1a"
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n161",
+                          "name": "Text",
+                          "width": "fill_container",
+                          "content": [
+                            {
+                              "text": "100% ELÉCTRICO",
+                              "fontFamily": "system-ui, -apple-system, sans-serif",
+                              "fontSize": 10.0,
+                              "fill": "#f5d061"
+                            }
+                          ],
+                          "fontFamily": "system-ui, -apple-system, sans-serif",
+                          "fontSize": 10.0,
+                          "textGrowth": "fixed-width",
+                          "fill": [
+                            {
+                              "type": "solid",
+                              "color": "#f5d061"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "n162",
+                          "name": "h3",
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "layout": "vertical",
+                          "padding": [
+                            8.0,
+                            0.0,
+                            8.0,
+                            0.0
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "n163",
+                              "name": "Text",
+                              "width": "fill_container",
+                              "content": "Phantom Zero EV",
+                              "fontFamily": "system-ui, -apple-system, sans-serif",
+                              "fontSize": 20.0,
+                              "fontWeight": 800,
+                              "textGrowth": "fixed-width",
+                              "fill": [
+                                {
+                                  "type": "solid",
+                                  "color": "#ffffff"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "n164",
+                          "name": "p",
+                          "width": "fill_container",
+                          "height": "fit_content",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "n165",
+                              "name": "Text",
+                              "width": "fill_container",
+                              "content": "2,100 HP",
+                              "fontFamily": "system-ui, -apple-system, sans-serif",
+                              "fontSize": 24.0,
+                              "fontWeight": 900,
+                              "textGrowth": "fixed-width",
+                              "fill": [
+                                {
+                                  "type": "solid",
+                                  "color": "#f5d061"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n166",
+              "name": "div",
+              "width": "fill_container",
+              "height": "fit_content",
+              "layout": "horizontal",
+              "padding": [
+                25.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "stroke": {
+                "thickness": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "align": "inside",
+                "fill": [
+                  {
+                    "type": "solid",
+                    "color": "#ffffff14"
+                  }
+                ]
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n167",
+                  "name": "span",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n168",
+                      "name": "Text",
+                      "content": "© 2026 Vault Hypercars. Todos los derechos reservados.",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 12.0,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#60606a"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n169",
+                  "name": "div",
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "layout": "vertical",
+                  "padding": [
+                    9.0,
+                    21.0,
+                    9.0,
+                    21.0
+                  ],
+                  "cornerRadius": 4.0,
+                  "fill": [
+                    {
+                      "type": "solid",
+                      "color": "#ffffff0a"
+                    }
+                  ],
+                  "stroke": {
+                    "thickness": 1.0,
+                    "align": "inside",
+                    "fill": [
+                      {
+                        "type": "solid",
+                        "color": "#ffffff1a"
+                      }
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n170",
+                      "name": "Text",
+                      "content": "🔒 ACCESO ADMIN",
+                      "fontFamily": "system-ui, -apple-system, sans-serif",
+                      "fontSize": 11.0,
+                      "fontWeight": 600,
+                      "letterSpacing": 1.5,
+                      "textGrowth": "auto",
+                      "fill": [
+                        {
+                          "type": "solid",
+                          "color": "#b0b0ba"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "editorMeta": {
+    "activePageIndex": 0,
+    "preserveAuthoredGeometry": false
+  }
+}
