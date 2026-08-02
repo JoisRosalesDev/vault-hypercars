@@ -22,13 +22,15 @@ quality:
     config: tsconfig.json
 
 testing:
-  strict_tdd: false
-  runner: none
-  layers: []
-  coverage: unavailable
-  explanation: >-
-    No unit, integration, or E2E test runner (e.g. Vitest, Jest, Playwright) is currently configured in package.json.
-    Strict TDD is set to false until a test framework is installed.
+  strict_tdd: true
+  runner: vitest + playwright
+  layers:
+    - unit
+    - components
+    - e2e
+  scripts:
+    unit: pnpm test:unit
+    e2e: pnpm test:e2e
 
 artifacts:
   openspec_dir: openspec
