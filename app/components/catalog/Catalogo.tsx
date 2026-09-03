@@ -80,12 +80,12 @@ export function Catalogo() {
   return (
     <section id="catalogo" className="relative py-28 px-8 max-w-7xl mx-auto w-full z-10">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-white/10 pb-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-zinc-800 pb-8">
         <div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-[#f5d061] tracking-widest mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-accent/10 border border-accent/30 text-xs font-mono font-bold text-accent tracking-widest mb-3 uppercase">
             <SparklesIcon className="w-3.5 h-3.5" /> CATÁLOGO EXCLUSIVO BUGATTI • LAMBORGHINI • FERRARI
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+          <h2 className="text-4xl md:text-5xl font-display font-black tracking-tight text-white uppercase">
             CATÁLOGO DE COMPRA
           </h2>
         </div>

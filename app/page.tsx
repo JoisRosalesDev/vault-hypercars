@@ -11,7 +11,7 @@ import { ToastNotification } from "./components/ui/ToastNotification";
 
 function MainApp() {
   return (
-    <div className="min-h-screen bg-[#08080a] text-white font-sans relative overflow-hidden flex flex-col justify-between selection:bg-[#f5d061] selection:text-black">
+    <div className="min-h-screen bg-zinc-950 text-white font-sans relative overflow-hidden flex flex-col justify-between selection:bg-accent selection:text-accent-contrast">
       {/* Toast Notification Banner */}
       <ToastNotification />
 

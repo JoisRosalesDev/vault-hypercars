@@ -15,8 +15,8 @@ export function ToastNotification({ message }: ToastNotificationProps) {
   if (!displayMessage) return null;
 
   return (
-    <div className="fixed top-20 right-6 z-50 bg-[#d4af37] text-black px-6 py-3 rounded-lg font-bold text-xs shadow-[0_0_30px_rgba(212,175,55,0.5)] animate-bounce flex items-center gap-2">
-      <ShoppingCartIcon className="w-4 h-4 text-black" /> {displayMessage}
+    <div className="fixed top-20 right-6 z-50 bg-accent text-accent-contrast px-5 py-2.5 rounded-none font-mono font-bold text-xs tracking-wider shadow-[0_0_20px_var(--color-accent-glow)] flex items-center gap-2 border border-accent">
+      <ShoppingCartIcon className="w-4 h-4 text-accent-contrast" /> {displayMessage}
     </div>
   );
 }

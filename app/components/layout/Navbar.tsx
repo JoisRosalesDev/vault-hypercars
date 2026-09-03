@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Currency } from "../../types/cart";
 import { useHypercarCart } from "../../hooks/useHypercarCart";
 import { ShoppingCartIcon, MenuIcon, CloseIcon } from "../ui/Icons";
+import { ThemeToggle } from "../ui/ThemeToggle";
 
 export interface NavbarProps {
   currency?: Currency;
@@ -34,39 +35,41 @@ export function Navbar({
   const handleCurrencyChange = onCurrencyChange ?? setCurrency;
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#08080a]/75 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-5 flex justify-between items-center">
+    <header className="sticky top-0 z-40 w-full bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800 transition-colors duration-150">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex flex-col group">
-          <span className="text-xl sm:text-2xl font-black tracking-[0.25em] text-[#f5d061] group-hover:text-white transition-colors duration-300">
+          <span className="text-xl sm:text-2xl font-black tracking-[0.25em] text-accent group-hover:text-white transition-colors duration-150">
             VAULT
           </span>
-          <span className="text-[8px] sm:text-[9px] tracking-[0.4em] text-zinc-400 font-medium">
-            HYPERCARS
+          <span className="text-[8px] sm:text-[9px] tracking-[0.4em] text-zinc-400 font-mono">
+            HYPERCARS // TELEMETRY
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-10 text-xs font-semibold tracking-[0.2em] text-zinc-400">
-          <Link href="/" className="text-white hover:text-[#f5d061] transition-colors">
-            HOME
+        <nav className="hidden md:flex items-center gap-8 text-xs font-bold tracking-[0.2em] text-zinc-400">
+          <Link href="/" className="text-white hover:text-accent transition-colors">
+            INICIO
           </Link>
           <Link href="#catalogo" className="hover:text-white transition-colors">
             CATÁLOGO
           </Link>
         </nav>
 
-        {/* Currency Switcher & Cart Button & Mobile Hamburger Toggle */}
+        {/* ThemeToggle & Currency Switcher & Cart Button & Mobile Hamburger Toggle */}
         <div className="flex items-center gap-3">
-          {/* Currency Switcher Dropdown/Buttons */}
-          <div className="hidden sm:flex items-center gap-1 bg-white/5 border border-white/10 rounded px-2 py-1">
+          <ThemeToggle />
+
+          {/* Currency Switcher */}
+          <div className="hidden sm:flex items-center p-0.5 bg-zinc-950 border border-zinc-800 rounded-none">
             {(["USD", "EUR", "GBP", "AED"] as Currency[]).map((c) => (
               <button
                 key={c}
                 onClick={() => handleCurrencyChange(c)}
-                className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${
+                className={`px-2 py-0.5 text-[10px] font-mono font-bold transition-colors cursor-pointer ${
                   currentCurrency === c
-                    ? "bg-[#d4af37] text-black"
+                    ? "bg-accent text-accent-contrast shadow-[0_0_10px_var(--color-accent-glow)]"
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
@@ -77,12 +80,12 @@ export function Navbar({
 
           <button
             onClick={handleOpenCart}
-            className="relative px-4 sm:px-6 py-2.5 sm:py-3 border border-[#d4af37] text-[#f5d061] text-xs font-bold tracking-[0.2em] rounded-sm hover:bg-[#d4af37] hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.15)] flex items-center gap-2 sm:gap-3 cursor-pointer"
+            className="relative px-4 sm:px-5 py-2 sm:py-2.5 border border-accent/60 text-accent text-xs font-mono font-bold tracking-[0.2em] rounded-none hover:bg-accent hover:text-accent-contrast transition-all duration-150 shadow-[0_0_12px_var(--color-accent-glow)] flex items-center gap-2 sm:gap-3 cursor-pointer"
           >
             <ShoppingCartIcon className="w-4 h-4" />
             <span className="hidden sm:inline">CARRITO</span>
             {count > 0 && (
-              <span className="w-5 h-5 rounded-full bg-[#f5d061] text-black font-black text-[10px] flex items-center justify-center animate-pulse">
+              <span className="w-4 h-4 rounded-none bg-accent text-accent-contrast font-mono font-black text-[10px] flex items-center justify-center">
                 {count}
               </span>
             )}
@@ -91,7 +94,7 @@ export function Navbar({
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2.5 rounded border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="md:hidden p-2 rounded-none border border-zinc-800 bg-zinc-900/60 text-white hover:border-accent transition-colors cursor-pointer"
             aria-label="Abrir Menú"
           >
             {isMobileMenuOpen ? <CloseIcon className="w-5 h-5" /> : <MenuIcon className="w-5 h-5" />}
@@ -101,13 +104,13 @@ export function Navbar({
 
       {/* Mobile Hamburger Dropdown Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-[#08080a]/95 backdrop-blur-2xl px-6 py-6 space-y-4 animate-fadeIn">
+        <div className="md:hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-2xl px-6 py-6 space-y-4">
           <Link
             href="/"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-bold tracking-widest text-white hover:text-[#f5d061] py-2 border-b border-white/5"
+            className="block text-sm font-bold tracking-widest text-white hover:text-accent py-2 border-b border-zinc-900"
           >
-            HOME
+            INICIO
           </Link>
           <Link
             href="#catalogo"
@@ -118,8 +121,8 @@ export function Navbar({
           </Link>
 
           {/* Mobile Currency Selector */}
-          <div className="pt-2 border-t border-white/10 flex items-center justify-between">
-            <span className="text-xs text-zinc-400 font-semibold tracking-wider">DIVISA:</span>
+          <div className="pt-3 border-t border-zinc-800 flex items-center justify-between">
+            <span className="text-xs text-zinc-400 font-mono tracking-wider">DIVISA:</span>
             <div className="flex gap-1">
               {(["USD", "EUR", "GBP", "AED"] as Currency[]).map((c) => (
                 <button
@@ -128,8 +131,10 @@ export function Navbar({
                     handleCurrencyChange(c);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`px-2.5 py-1 rounded text-xs font-bold transition-colors ${
-                    currentCurrency === c ? "bg-[#d4af37] text-black" : "text-zinc-400 hover:text-white"
+                  className={`px-2.5 py-1 rounded-none text-xs font-mono font-bold transition-colors ${
+                    currentCurrency === c
+                      ? "bg-accent text-accent-contrast"
+                      : "text-zinc-400 hover:text-white border border-zinc-800"
                   }`}
                 >
                   {c}

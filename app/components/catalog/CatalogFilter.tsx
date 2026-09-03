@@ -21,10 +21,10 @@ export function CatalogFilter({ selectedBrand, onSelectBrand }: CatalogFilterPro
         <button
           key={tab.id}
           onClick={() => onSelectBrand(tab.id)}
-          className={`px-5 py-2.5 rounded text-xs font-bold tracking-wider transition-all border cursor-pointer ${
+          className={`px-4 py-2 text-xs font-mono font-bold tracking-wider transition-all duration-150 border cursor-pointer rounded-none ${
             selectedBrand.toLowerCase() === tab.id.toLowerCase()
-              ? "bg-[#d4af37] text-black border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.3)] scale-105"
-              : "bg-white/5 text-zinc-400 border-white/10 hover:border-white/20 hover:text-white"
+              ? "bg-accent text-accent-contrast border-accent shadow-[0_0_12px_var(--color-accent-glow)]"
+              : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white"
           }`}
         >
           {tab.label}

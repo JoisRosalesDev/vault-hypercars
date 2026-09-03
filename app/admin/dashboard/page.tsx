@@ -319,27 +319,27 @@ export default function AdminDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#08080a] text-white font-sans selection:bg-[#f5d061] selection:text-black pb-20">
+    <div className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-accent selection:text-accent-contrast pb-20">
       {/* Admin Top Header */}
-      <header className="border-b border-white/10 bg-[#0c0c10] px-4 sm:px-8 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <header className="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-xl px-4 sm:px-8 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex flex-wrap items-center gap-3 sm:gap-4 shrink-0">
           <Link href="/" className="flex flex-col shrink-0">
-            <span className="text-xl font-black tracking-[0.25em] text-[#f5d061]">VAULT</span>
-            <span className="text-[8px] tracking-[0.4em] text-zinc-400">HYPERCARS ADMIN</span>
+            <span className="text-xl font-display font-black tracking-[0.25em] text-accent">VAULT</span>
+            <span className="text-[8px] font-mono tracking-[0.4em] text-zinc-400">HYPERCARS // ADMIN</span>
           </Link>
-          <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold flex items-center gap-1.5 shrink-0">
+          <span className="px-3 py-1 rounded-none bg-accent/10 text-accent border border-accent/30 text-xs font-mono font-bold flex items-center gap-1.5 shrink-0">
             <LockIcon className="w-3.5 h-3.5" /> PANEL DE ADMINISTRACIÓN
           </span>
         </div>
 
-        <Link href="/" className="text-xs text-zinc-400 hover:text-white font-semibold shrink-0">
+        <Link href="/" className="text-xs font-mono text-zinc-400 hover:text-white font-semibold shrink-0">
           CERRAR SESIÓN →
         </Link>
       </header>
 
       <main className="max-w-7xl mx-auto px-8 py-10 space-y-10">
         {apiError && (
-          <div className="p-4 rounded-lg bg-rose-500/10 border border-rose-500/30 flex items-center gap-3 text-rose-200 text-xs">
+          <div className="p-4 rounded-none bg-rose-500/10 border border-rose-500/30 flex items-center gap-3 text-rose-200 text-xs font-mono">
             <AlertTriangleIcon className="w-5 h-5 text-rose-400 shrink-0" />
             <span>{apiError}</span>
           </div>
@@ -350,9 +350,9 @@ export default function AdminDashboardPage() {
 
         {/* Catalog Table Section */}
         {isLoading ? (
-          <div className="p-12 text-center rounded-2xl bg-[#0e0e14] border border-white/10">
-            <div className="inline-block animate-spin w-6 h-6 border-2 border-[#d4af37] border-t-transparent rounded-full mb-2"></div>
-            <p className="text-xs text-zinc-400">Cargando inventario desde la base de datos Supabase...</p>
+          <div className="p-12 text-center rounded-none sm:rounded-sm bg-zinc-900/50 backdrop-blur-md border border-zinc-800">
+            <div className="inline-block animate-spin w-6 h-6 border-2 border-accent border-t-transparent rounded-full mb-2"></div>
+            <p className="text-xs font-mono text-zinc-400">Cargando inventario desde la base de datos Supabase...</p>
           </div>
         ) : (
           <CatalogTable

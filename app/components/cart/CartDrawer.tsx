@@ -63,32 +63,32 @@ export function CartDrawer() {
       <div className="flex-1" onClick={() => setIsCartOpen(false)} />
 
       {/* Cart Drawer Panel */}
-      <div className="w-full max-w-md bg-[#0c0c10] border-l border-white/10 h-full p-6 flex flex-col justify-between shadow-2xl relative z-10 animate-slideLeft">
+      <div className="w-full max-w-md bg-zinc-950 border-l border-zinc-800 h-full p-6 flex flex-col justify-between shadow-2xl relative z-10 animate-slideLeft">
         <div>
           {/* Header */}
-          <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-6">
+          <div className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6">
             <div className="flex items-center gap-3 text-white">
-              <ShoppingCartIcon className="w-5 h-5 text-[#f5d061]" />
-              <h2 className="text-xl font-bold tracking-wide">CARRITO DE COMPRAS</h2>
+              <ShoppingCartIcon className="w-5 h-5 text-accent" />
+              <h2 className="text-xl font-display font-black tracking-wider uppercase">CARRITO DE COMPRAS</h2>
             </div>
             <button
               onClick={() => setIsCartOpen(false)}
-              className="text-zinc-400 hover:text-white text-xs font-bold tracking-widest px-2.5 py-1.5 border border-white/10 rounded cursor-pointer flex items-center gap-1.5"
+              className="text-zinc-400 hover:text-accent hover:border-accent text-xs font-mono font-bold tracking-widest px-2.5 py-1.5 border border-zinc-800 rounded-none cursor-pointer flex items-center gap-1.5 transition-colors"
             >
               <CloseIcon className="w-3.5 h-3.5" /> CERRAR
             </button>
           </div>
 
           {/* Currency Switcher */}
-          <div className="flex items-center justify-between mb-6 p-3 rounded-lg bg-white/5 border border-white/10">
-            <span className="text-xs text-zinc-400 font-medium tracking-wider">DIVISA DE PAGO:</span>
+          <div className="flex items-center justify-between mb-6 p-3 rounded-none bg-zinc-900/40 border border-zinc-800">
+            <span className="text-xs font-mono text-zinc-400 font-medium tracking-wider">DIVISA DE PAGO:</span>
             <div className="flex gap-1">
               {(["USD", "EUR", "GBP", "AED"] as Currency[]).map((c) => (
                 <button
                   key={c}
                   onClick={() => setCurrency(c)}
-                  className={`px-2.5 py-1 rounded text-[11px] font-bold transition-colors cursor-pointer ${
-                    currency === c ? "bg-[#d4af37] text-black" : "text-zinc-400 hover:text-white"
+                  className={`px-2.5 py-1 rounded-none text-[11px] font-mono font-bold transition-colors cursor-pointer ${
+                    currency === c ? "bg-accent text-accent-contrast shadow-[0_0_10px_var(--color-accent-glow)]" : "text-zinc-400 hover:text-white"
                   }`}
                 >
                   {c}
@@ -100,12 +100,12 @@ export function CartDrawer() {
           {/* Cart Item List */}
           {cart.length === 0 ? (
             <div className="text-center py-16 text-zinc-500 flex flex-col items-center">
-              <CarIcon className="w-12 h-12 text-zinc-600 mb-3" />
-              <p className="text-sm font-semibold text-zinc-300">Tu carrito de hiperautos está vacío</p>
-              <p className="text-xs text-zinc-500 mt-1">Explora el catálogo de Bugatti, Lamborghini y Ferrari.</p>
+              <CarIcon className="w-12 h-12 text-zinc-700 mb-3" />
+              <p className="text-sm font-display font-bold text-zinc-300 uppercase tracking-wider">Tu carrito de hiperautos está vacío</p>
+              <p className="text-xs font-mono text-zinc-500 mt-1">Explora el catálogo de Bugatti, Lamborghini y Ferrari.</p>
             </div>
           ) : (
-            <div className="space-y-4 max-h-[50vh] overflow-y-auto pr-1">
+            <div className="space-y-3 max-h-[50vh] overflow-y-auto pr-1">
               {cart.map((item) => (
                 <CartItemRow
                   key={item.id}
@@ -120,22 +120,22 @@ export function CartDrawer() {
 
         {/* Footer Summary */}
         {cart.length > 0 && (
-          <div className="pt-6 border-t border-white/10 space-y-4">
+          <div className="pt-6 border-t border-zinc-800 space-y-4">
             {checkoutError && (
-              <div className="p-3 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium">
+              <div className="p-3 rounded-none bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono">
                 {checkoutError}
               </div>
             )}
             <div className="flex justify-between items-end">
-              <span className="text-xs text-zinc-400 tracking-wider">TOTAL A PAGAR:</span>
-              <span className="text-2xl font-black text-[#f5d061]">{formatPrice(totalUSD)}</span>
+              <span className="text-xs font-mono text-zinc-400 tracking-wider uppercase">TOTAL A PAGAR:</span>
+              <span className="text-2xl font-mono font-black text-accent tabular-nums">{formatPrice(totalUSD)}</span>
             </div>
 
             <button
               onClick={handleCheckout}
               disabled={isProcessing}
-              className={`w-full py-4 bg-[#d4af37] text-black text-xs font-extrabold tracking-[0.2em] rounded-md transition-all shadow-[0_0_25px_rgba(212,175,55,0.3)] flex items-center justify-center gap-2 ${
-                isProcessing ? "opacity-60 cursor-not-allowed" : "hover:bg-[#f5d061] hover:scale-[1.02] cursor-pointer"
+              className={`w-full py-4 bg-accent text-accent-contrast text-xs font-display font-black tracking-[0.2em] rounded-none transition-all shadow-[0_0_20px_var(--color-accent-glow)] flex items-center justify-center gap-2 uppercase ${
+                isProcessing ? "opacity-60 cursor-not-allowed" : "hover:bg-accent-hover active:scale-[0.98] cursor-pointer"
               }`}
             >
               {isProcessing ? (
