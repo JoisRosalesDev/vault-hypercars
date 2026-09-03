@@ -56,9 +56,11 @@ vault-hypercars/
 │   │   │   └── SiteFooter.tsx         # Footer with discrete Admin link
 │   │   └── ui/
 │   │       ├── Icons.tsx              # Vector SVG icon library
+│   │       ├── ThemeToggle.tsx        # Brutalist theme toggle atom (Cyan // Corsa)
 │   │       └── ToastNotification.tsx  # Global feedback toast notification
 │   ├── context/
-│   │   └── CartContext.tsx            # Context provider for global cart state
+│   │   ├── CartContext.tsx            # Context provider for global cart state
+│   │   └── ThemeContext.tsx           # Context provider for dynamic telemetry theme switching
 │   ├── hooks/
 │   │   └── useHypercarCart.ts         # Custom hook encapsulating cart actions & currency logic
 │   ├── lib/
@@ -72,9 +74,10 @@ vault-hypercars/
 │   │   ├── admin.ts                   # Admin dashboard & modal form type definitions
 │   │   ├── cart.ts                    # Cart state, items, idempotency & checkout types
 │   │   └── catalog.ts                 # Catalog item with stock, brand & status type definitions
-│   ├── globals.css                    # Tailwind CSS v4 styling rules
-│   ├── layout.tsx                     # Root layout with CartProvider wrapper
+│   ├── globals.css                    # Tailwind CSS v4 styling rules & telemetry variables
+│   ├── layout.tsx                     # Root layout with ThemeProvider, fonts & CartProvider
 │   └── page.tsx                       # Customer landing page composing layout & catalog components
+├── tailwind.config.ts                 # Tailwind configuration with telemetry & accent extensions
 ├── .env.example                       # Reference environment variable template with Stripe credentials
 └── openspec/                          # SDD specifications & change tracking
 ```
@@ -199,25 +202,43 @@ vault-hypercars/
 
 ---
 
-## 6. Component Architecture & UI Specifications
+## 6. Component Architecture & UI Specifications (Telemetry Brutalism)
 
-### 6.1 Catalog & Product Components (`app/components/catalog/`)
-- `CatalogFilter.tsx`: Brand selection tabs normalized with `.toLowerCase()` comparison.
+### 6.1 Theme System & Styling Foundations (`app/context/ThemeContext.tsx`, `app/globals.css`, `tailwind.config.ts`)
+- **Dynamic Dual Theme**:
+  - `cyan` (Cyan Eléctrico, `#06b6d4`, default state).
+  - `corsa` (Rojo Corsa, `#ef4444`).
+- **Typography Foundations**:
+  - Display: `Space Grotesk` (`font-display font-black tracking-tight`).
+  - Metrics / Telemetry: `JetBrains Mono` (`font-mono tabular-nums`).
+- **Theme Switcher (`ThemeToggle.tsx`)**:
+  - Direct DOM mutation on `document.documentElement.setAttribute("data-theme", theme)` with `localStorage` persistence and anti-flicker inline script in `app/layout.tsx`.
+- **Chasis & Geometry**:
+  - Sharp corners (`rounded-none sm:rounded-sm`), dark carbon panels (`bg-zinc-950`, `bg-zinc-900/50`), technical dividers (`border-zinc-800`), and telemetry glows (`shadow-[0_0_15px_var(--color-accent-glow)]`).
+
+### 6.2 Catalog & Product Components (`app/components/catalog/`)
+- `CatalogFilter.tsx`: Case-normalized brand selection tabs with sharp rectangular geometry and dynamic accent highlight.
 - `CatalogGrid.tsx`: Fetches live data from `/api/catalog`.
 - `ProductCard.tsx`:
-  - `stock > 1`: Emerald badge (`Stock: {stock} unidades`).
-  - `stock === 1`: Amber badge (`¡Última unidad disponible!`).
-  - `stock === 0`: Rose badge (`AGOTADO`) with CTA button disabled.
-- `CatalogModal.tsx`: Displays stock availability in specification table and disables cart button when `stock === 0`.
+  - Contained in brutalist glassmorphism chasis (`bg-zinc-900/50 backdrop-blur-md border border-zinc-800 rounded-none sm:rounded-sm`).
+  - Technical metrics in `font-mono tabular-nums`.
+  - Stock badges:
+    - `stock > 1`: Emerald badge (`Stock: {stock} u.`).
+    - `stock === 1`: Accent badge (`¡Última unidad!`).
+    - `stock === 0`: Rose badge (`AGOTADO`) with CTA button disabled.
+  - Inspection button with accessible `aria-label="Ver detalles"`.
+- `CatalogModal.tsx`: Displays technical specifications with `font-mono tabular-nums` and CTA button in `bg-accent`.
 
-### 6.2 Cart Components (`app/components/cart/`)
-- `CartDrawer.tsx`: Slide-over cart displaying line items, total price, and Stripe Checkout trigger.
+### 6.3 Cart Components (`app/components/cart/`)
+- `CartDrawer.tsx`: Slide-over cart displaying line items, multi-currency selector, total in `font-mono text-accent`, and Stripe Checkout trigger.
+- `CartItemRow.tsx`: Technical cart item card with monospace controls.
 
-### 6.3 Admin Dashboard & Components (`app/components/admin/` & `app/admin/dashboard/`)
-- `app/admin/dashboard/page.tsx`: Header refactored with responsive `flex-col sm:flex-row`, `shrink-0`, and `gap-4` layout to eliminate mobile text clipping and horizontal scrollbars.
-- `DashboardAnalytics.tsx`: Fetches and renders live database metrics from `/api/admin/analytics`.
-- `CatalogTable.tsx`: Displays `"STOCK"` column alongside price, status, and brand.
-- `AdminModals.tsx`: Includes required numerical stock input `<input type="number" min="0" name="stock" />`.
+### 6.4 Admin Dashboard & Components (`app/components/admin/` & `app/admin/dashboard/`)
+- `app/admin/login/page.tsx`: Glassmorphism login card on `bg-zinc-950` with strict Google OAuth authorization.
+- `app/admin/dashboard/page.tsx`: Responsive telemetry header, real-time KPI overview, and catalog inventory table.
+- `DashboardAnalytics.tsx`: Fetches and renders live database metrics in telemetry HUD cards (`font-mono tabular-nums text-accent`).
+- `CatalogTable.tsx`: Displays inventory with monospace metrics, status indicators, and actions.
+- `AdminModals.tsx`: Brutalist form modal and double confirmation dialog with numerical stock input `<input type="number" min="0" name="stock" />`.
 
 ---
 
@@ -245,7 +266,8 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_51..."
 
 ## 8. Non-Functional Constraints & Quality Standards
 
-1. **Zero Visual/Behavioral Regression**: Maintain 100% fidelity to dark obsidian/ champagne gold design system and full-bleed video hero loop background.
-2. **Type Safety & Linting**: Zero errors in `npx tsc --noEmit` and `pnpm lint`.
-3. **Transaction Safety**: Atomic database transactions (`prisma.$transaction`) MUST be enforced for all checkout pre-checks and webhook stock decrements.
-4. **Idempotency**: Stripe API calls MUST include `idempotencyKey` headers to guarantee zero duplicate charges or orders.
+1. **Telemetry Brutalist Visual Language**: 100% adherence to Carbon Gray/Titanium White/Dynamic Accent (Cyan/Corsa) design system with monospaced telemetry metrics and zero gold remnants.
+2. **Backend & Data Immutability**: Strict zero-mutation policy for `prisma/schema.prisma` and server endpoints `app/api/`.
+3. **Type Safety & Linting**: Zero errors in `npx tsc --noEmit` and `pnpm lint`.
+4. **Transaction Safety**: Atomic database transactions (`prisma.$transaction`) MUST be enforced for all checkout pre-checks and webhook stock decrements.
+5. **Idempotency**: Stripe API calls MUST include `idempotencyKey` headers to guarantee zero duplicate charges or orders.
