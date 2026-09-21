@@ -71,6 +71,10 @@ vault-hypercars/
 ├── prisma/
 │   ├── schema.prisma            # Esquemas de Base de Datos PostgreSQL
 │   └── seed.ts                  # Script de Inicialización de Datos
+├── tests/
+│   ├── components/              # Pruebas de componentes con Testing Library (Vitest)
+│   ├── e2e/                     # Pruebas End-to-End de flujos de usuario (Playwright)
+│   └── unit/                    # Pruebas unitarias de lógica y utilidades (Vitest)
 └── openspec/                    # Especificaciones y Seguimiento de Cambios SDD
 ```
 
@@ -125,6 +129,46 @@ generator client {
 El proyecto sigue una estética de lujo industrial:
 - **Paleta de Colores**: Negro Obsidiana (`#08080a`), Carbón (`#0d0d12`), Cristal Oscuro (`#0e0e14`), Oro Metálico (`#d4af37`) y Oro Champán (`#f5d061`).
 - **Estándar Cero Emojis**: Toda la iconografía del sistema está construida al 100% utilizando componentes vectoriales SVG purificados en [`app/components/ui/Icons.tsx`](file:///C:/Users/rosal/OneDrive/Documentos/Dev/vault-hypercars/app/components/ui/Icons.tsx). No existen emojis en formato de texto en el código fuente.
+
+---
+
+## Estrategia y Ejecución de Pruebas
+
+La plataforma implementa una arquitectura basada en la **Pirámide de Testing**, desacoplando pruebas unitarias ultrarrápidas de pruebas de integración y flujos completos de usuario:
+
+### 1. Pruebas Unitarias y de Componentes (Vitest + Testing Library)
+Ejecución en memoria (`jsdom` / Node.js) sin necesidad de levantar el servidor. Diseñadas para validación instantánea de lógica pura, mutaciones de estado y renderizado aislado.
+- **Lógica de Dominio y Divisas** (`tests/unit/currency.test.ts`): Validación de formato numérico y tasas de cambio para USD, EUR, GBP y AED.
+- **Componentes de Catálogo** (`tests/components/ProductCard.test.tsx`): Renderizado de especificaciones técnicas, insignias de stock e interacción de compra.
+
+```bash
+# Ejecutar suite completa de pruebas unitarias
+npm test
+
+# Modo interactivo en desarrollo (watch mode)
+npm run test:watch
+```
+
+### 2. Pruebas End-to-End y Flujos de Usuario (Playwright)
+Ejecución sobre navegadores reales (*Chromium*, *Firefox*) contra el servidor Next.js. Cubren el viaje completo del usuario e integraciones críticas:
+- **Navegación y Catálogo** (`tests/e2e/catalog.spec.ts`): Filtrado reactivo por marca y apertura/cierre de modal de inspección técnica.
+- **Ciclo Completo del Carrito** (`tests/e2e/cart-flow.spec.ts`): Adición de vehículos desde la vitrina, notificación toast, apertura de drawer, cambio de divisa en vivo, eliminación de artículos y verificación del estado vacío (*empty state*).
+- **Pasarela de Pago y Checkout VIP** (`tests/e2e/checkout-flow.spec.ts`): Intercepción y simulación de `/api/checkout`, validación de clave de idempotencia (`idempotencyKey`), estado de carga y redirección a Stripe, así como manejo resiliente de errores HTTP 500 con banner visual.
+- **Seguridad y Control de Acceso RBAC** (`tests/e2e/auth-flow.spec.ts`): Redirección estricta de rutas protegidas (`/admin/dashboard` hacia `/admin/login`), integridad de componentes de inicio de sesión OAuth y visualización de banner `AccessDenied`.
+
+```bash
+# Descargar binarios de navegador (primera ejecución)
+npx playwright install chromium
+
+# Ejecutar todas las pruebas E2E en Chromium
+npx playwright test --project=chromium
+
+# Ejecutar suite E2E completa en todos los navegadores configurados
+npm run test:e2e
+
+# Visualizar el reporte interactivo HTML de Playwright
+npx playwright show-report
+```
 
 ---
 
