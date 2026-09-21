@@ -32,4 +32,4 @@ Implement comprehensive End-to-End (E2E) testing for critical user flows in Vaul
 - [x] `TASK-4`: Full Suite Execution & Cleanup
   - Route: Direct inline
   - Run all Playwright tests across Chromium to ensure 0 flaky tests.
-  - Evidence: `11 passed (15.3s)` in Chromium with 4 workers. Vitest also verified (10 passed).
+  - Evidence: `11 passed (15.3s)` in Chromium with 4 workers. Vitest verified (10 passed). Commit: `3ef3544` on `feature/e2e-user-flows`.
