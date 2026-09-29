@@ -48,7 +48,7 @@ export function Navbar({
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 text-xs font-bold tracking-[0.2em] text-zinc-400">
+        <nav aria-label="Navegación principal" className="hidden md:flex items-center gap-8 text-xs font-bold tracking-[0.2em] text-zinc-400">
           <Link href="/" className="text-white hover:text-accent transition-colors">
             INICIO
           </Link>
@@ -62,11 +62,13 @@ export function Navbar({
           <ThemeToggle />
 
           {/* Currency Switcher */}
-          <div className="hidden sm:flex items-center p-0.5 bg-zinc-950 border border-zinc-800 rounded-none">
+          <div role="group" aria-label="Selector de divisa" className="hidden sm:flex items-center p-0.5 bg-zinc-950 border border-zinc-800 rounded-none">
             {(["USD", "EUR", "GBP", "AED"] as Currency[]).map((c) => (
               <button
                 key={c}
                 onClick={() => handleCurrencyChange(c)}
+                aria-label={`Seleccionar divisa ${c}`}
+                aria-pressed={currentCurrency === c}
                 className={`px-2 py-0.5 text-[10px] font-mono font-bold transition-colors cursor-pointer ${
                   currentCurrency === c
                     ? "bg-accent text-accent-contrast shadow-[0_0_10px_var(--color-accent-glow)]"
@@ -80,6 +82,7 @@ export function Navbar({
 
           <button
             onClick={handleOpenCart}
+            aria-label={`Abrir carrito de compras, ${count} artículos`}
             className="relative px-4 sm:px-5 py-2 sm:py-2.5 border border-accent/60 text-accent text-xs font-mono font-bold tracking-[0.2em] rounded-none hover:bg-accent hover:text-accent-contrast transition-all duration-150 shadow-[0_0_12px_var(--color-accent-glow)] flex items-center gap-2 sm:gap-3 cursor-pointer"
           >
             <ShoppingCartIcon className="w-4 h-4" />
@@ -95,7 +98,8 @@ export function Navbar({
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 rounded-none border border-zinc-800 bg-zinc-900/60 text-white hover:border-accent transition-colors cursor-pointer"
-            aria-label="Abrir Menú"
+            aria-label={isMobileMenuOpen ? "Cerrar Menú" : "Abrir Menú"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <CloseIcon className="w-5 h-5" /> : <MenuIcon className="w-5 h-5" />}
           </button>
@@ -104,7 +108,7 @@ export function Navbar({
 
       {/* Mobile Hamburger Dropdown Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-2xl px-6 py-6 space-y-4">
+        <nav aria-label="Navegación móvil" className="md:hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-2xl px-6 py-6 space-y-4">
           <Link
             href="/"
             onClick={() => setIsMobileMenuOpen(false)}
@@ -123,7 +127,7 @@ export function Navbar({
           {/* Mobile Currency Selector */}
           <div className="pt-3 border-t border-zinc-800 flex items-center justify-between">
             <span className="text-xs text-zinc-400 font-mono tracking-wider">DIVISA:</span>
-            <div className="flex gap-1">
+            <div role="group" aria-label="Selector de divisa móvil" className="flex gap-1">
               {(["USD", "EUR", "GBP", "AED"] as Currency[]).map((c) => (
                 <button
                   key={c}
@@ -131,6 +135,8 @@ export function Navbar({
                     handleCurrencyChange(c);
                     setIsMobileMenuOpen(false);
                   }}
+                  aria-label={`Seleccionar divisa ${c}`}
+                  aria-pressed={currentCurrency === c}
                   className={`px-2.5 py-1 rounded-none text-xs font-mono font-bold transition-colors ${
                     currentCurrency === c
                       ? "bg-accent text-accent-contrast"
@@ -142,7 +148,7 @@ export function Navbar({
               ))}
             </div>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

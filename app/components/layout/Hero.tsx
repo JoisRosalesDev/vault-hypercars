@@ -32,7 +32,7 @@ export function Hero({
       <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/80 z-1 pointer-events-none" />
 
       {/* Hero Content */}
-      <main className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-24 flex-1 flex flex-col justify-center">
+      <section aria-label="Introducción" className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-24 flex-1 flex flex-col justify-center">
         <div className="max-w-3xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-accent/10 border border-accent/30 text-accent text-[10px] sm:text-xs font-mono font-bold tracking-[0.25em] mb-6 sm:mb-8 backdrop-blur-md shadow-[0_0_12px_var(--color-accent-glow)]">
@@ -80,7 +80,7 @@ export function Hero({
             <div className="text-[9px] sm:text-[10px] md:text-[11px] font-mono font-bold tracking-[0.2em] text-zinc-500 mt-1 uppercase">BUGATTI // LAMBORGHINI // FERRARI</div>
           </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }

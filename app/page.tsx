@@ -18,11 +18,14 @@ function MainApp() {
       {/* Sticky Glassmorphism Header / Navbar */}
       <Navbar />
 
-      {/* Hero Section with Video Background */}
-      <Hero />
+      {/* Main Content Landmark */}
+      <main id="main-content" className="flex-1 flex flex-col">
+        {/* Hero Section with Video Background */}
+        <Hero />
 
-      {/* Catalog */}
-      <Catalogo />
+        {/* Catalog */}
+        <Catalogo />
+      </main>
 
       {/* Footer */}
       <SiteFooter />

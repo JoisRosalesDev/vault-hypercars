@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { CatalogItem } from "../../types/catalog";
 import { useHypercarCart } from "../../hooks/useHypercarCart";
+import { useAccessibleDialog } from "../../hooks/useAccessibleDialog";
 import { ShoppingCartIcon, CloseIcon } from "../ui/Icons";
 
 export interface CatalogModalProps {
@@ -13,6 +14,13 @@ export interface CatalogModalProps {
 
 export function CatalogModal({ item, onClose, onAddToCart }: CatalogModalProps) {
   const { addToCart, setIsCartOpen, formatPrice } = useHypercarCart();
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useAccessibleDialog({
+    isOpen: !!item,
+    onClose,
+    dialogRef
+  });
 
   if (!item) return null;
 
@@ -34,9 +42,16 @@ export function CatalogModal({ item, onClose, onAddToCart }: CatalogModalProps) 
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="w-full max-w-lg rounded-none sm:rounded-sm bg-zinc-950/95 border border-zinc-800 p-8 relative shadow-2xl">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="catalog-modal-title"
+        className="w-full max-w-lg rounded-none sm:rounded-sm bg-zinc-950/95 border border-zinc-800 p-8 relative shadow-2xl"
+      >
         <button
           onClick={onClose}
+          aria-label="Cerrar modal de especificaciones"
           className="absolute top-6 right-6 text-zinc-400 hover:text-accent text-xs font-mono font-bold tracking-widest cursor-pointer flex items-center gap-1 transition-colors"
         >
           <CloseIcon className="w-4 h-4" /> CERRAR
@@ -48,11 +63,17 @@ export function CatalogModal({ item, onClose, onAddToCart }: CatalogModalProps) 
 
         {item.image && (
           <div className="my-4 rounded-none overflow-hidden max-h-48 border border-zinc-800">
-            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+            <img
+              src={item.image}
+              alt={`Fotografía detallada de ${item.brand} ${item.name}`}
+              className="w-full h-full object-cover"
+            />
           </div>
         )}
 
-        <h3 className="text-2xl sm:text-3xl font-display font-black text-white mt-3 mb-1 uppercase tracking-tight">{item.name}</h3>
+        <h3 id="catalog-modal-title" className="text-2xl sm:text-3xl font-display font-black text-white mt-3 mb-1 uppercase tracking-tight">
+          {item.name}
+        </h3>
         <p className="text-xs font-mono text-zinc-400 mb-6">{item.description}</p>
 
         <div className="space-y-3 py-4 border-y border-zinc-800 mb-6">

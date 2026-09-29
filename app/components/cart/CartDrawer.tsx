@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { Currency } from "../../types/cart";
 import { useHypercarCart } from "../../hooks/useHypercarCart";
+import { useAccessibleDialog } from "../../hooks/useAccessibleDialog";
 import { CartItemRow } from "./CartItemRow";
 import { ShoppingCartIcon, CloseIcon, CarIcon } from "../ui/Icons";
 
@@ -20,6 +21,13 @@ export function CartDrawer() {
 
   const [isProcessing, setIsProcessing] = React.useState(false);
   const [checkoutError, setCheckoutError] = React.useState<string | null>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  useAccessibleDialog({
+    isOpen: isCartOpen,
+    onClose: () => setIsCartOpen(false),
+    dialogRef: drawerRef
+  });
 
   if (!isCartOpen) return null;
 
@@ -59,24 +67,44 @@ export function CartDrawer() {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex justify-end animate-fadeIn">
-      {/* Backdrop overlay */}
-      <div className="flex-1" onClick={() => setIsCartOpen(false)} />
+      {/* Accessible backdrop */}
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-label="Cerrar carrito de compras"
+        className="flex-1 cursor-default w-full h-full bg-transparent border-0"
+        onClick={() => setIsCartOpen(false)}
+      />
 
       {/* Cart Drawer Panel */}
-      <div className="w-full max-w-md bg-zinc-950 border-l border-zinc-800 h-full p-6 flex flex-col justify-between shadow-2xl relative z-10 animate-slideLeft">
+      <div
+        ref={drawerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cart-drawer-title"
+        className="w-full max-w-md bg-zinc-950 border-l border-zinc-800 h-full p-6 flex flex-col justify-between shadow-2xl relative z-10 animate-slideLeft"
+      >
         <div>
           {/* Header */}
           <div className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6">
             <div className="flex items-center gap-3 text-white">
               <ShoppingCartIcon className="w-5 h-5 text-accent" />
-              <h2 className="text-xl font-display font-black tracking-wider uppercase">CARRITO DE COMPRAS</h2>
+              <h2 id="cart-drawer-title" className="text-xl font-display font-black tracking-wider uppercase">CARRITO DE COMPRAS</h2>
             </div>
             <button
               onClick={() => setIsCartOpen(false)}
+              aria-label="Cerrar carrito de compras"
               className="text-zinc-400 hover:text-accent hover:border-accent text-xs font-mono font-bold tracking-widest px-2.5 py-1.5 border border-zinc-800 rounded-none cursor-pointer flex items-center gap-1.5 transition-colors"
             >
               <CloseIcon className="w-3.5 h-3.5" /> CERRAR
             </button>
+          </div>
+
+          {/* Screen reader live region for announcements */}
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
+            {cart.length > 0
+              ? `Carrito de compras con ${cart.length} hiperautos seleccionados. Total: ${formatPrice(totalUSD)}.`
+              : "El carrito de compras está vacío."}
           </div>
 
           {/* Currency Switcher */}

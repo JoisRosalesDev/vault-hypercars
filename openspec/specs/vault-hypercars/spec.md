@@ -1,6 +1,6 @@
 # OpenSpec Specification: Vault Hypercars Platform
 
-**Version**: 3.1.0  
+**Version**: 3.2.0  
 **Architecture Pattern**: Domain-Layered Modular Architecture & Full-Stack API Integration  
 **Target Project**: Vault Hypercars (`vault-hypercars`)
 
@@ -8,7 +8,7 @@
 
 ## 1. System Overview & Architecture Guidelines
 
-The Vault Hypercars platform is designed around a modular domain-layered architecture with full-stack Next.js App Router integrations. It separates frontend presentational concerns from persistent backend data storage, strictly typed REST API routes, Stripe payment gateway transactions, explicit stock management, real-time database analytics, and enterprise security guarantees (NextAuth Google OAuth strict authorization, sliding-window rate limiting, and execution timeouts).
+The Vault Hypercars platform is designed around a modular domain-layered architecture with full-stack Next.js App Router integrations. It separates frontend presentational concerns from persistent backend data storage, strictly typed REST API routes, Stripe payment gateway transactions, explicit stock management, real-time database analytics, enterprise security guarantees (NextAuth Google OAuth strict authorization, sliding-window rate limiting, and execution timeouts), regulatory web accessibility (WCAG 2.2 AA / Chilean Law 20.422), and comprehensive data privacy rights compliance (GDPR / Chilean Law 21.719).
 
 ```
 vault-hypercars/
@@ -24,6 +24,9 @@ vault-hypercars/
 │   │   │   └── route.ts         # Public GET catalog API endpoint with mode: 'insensitive' brand filter
 │   │   ├── checkout/
 │   │   │   └── route.ts         # Stripe Checkout session creation API with idempotency & stock pre-check
+│   │   ├── privacy/
+│   │   │   └── request/
+│   │   │       └── route.ts     # ARCO user rights API (data export & atomic email anonymization)
 │   │   ├── webhooks/
 │   │   │   └── stripe/
 │   │   │       └── route.ts     # Stripe webhook endpoint (checkout.session.completed & expired)
@@ -39,25 +42,31 @@ vault-hypercars/
 │   │   └── login/page.tsx       # Google OAuth Admin Login page component
 │   ├── components/
 │   │   ├── admin/
-│   │   │   ├── AdminModals.tsx        # Form Modal & Confirmation Dialogs with stock input field
+│   │   │   ├── AdminModals.tsx        # Form Modal & Confirmation Dialogs with stock input field & explicit label bindings
 │   │   │   ├── CatalogTable.tsx       # Live hypercar inventory table with stock column & CRUD
 │   │   │   └── DashboardAnalytics.tsx # Real-time dynamic database metrics renderer
 │   │   ├── cart/
-│   │   │   ├── CartDrawer.tsx         # Slide-over cart drawer with Stripe Checkout trigger
-│   │   │   └── CartItemRow.tsx        # Cart item row component with quantity control
+│   │   │   ├── CartDrawer.tsx         # Slide-over cart drawer with Stripe Checkout trigger & accessible dialog trap
+│   │   │   └── CartItemRow.tsx        # Cart item row component with quantity control & accessible labels
 │   │   ├── catalog/
 │   │   │   ├── CatalogFilter.tsx      # Case-normalized brand selection tabs
 │   │   │   ├── CatalogGrid.tsx        # Responsive hypercar grid fetching live from /api/catalog
-│   │   │   ├── CatalogModal.tsx       # Detailed specifications viewer modal with stock badge
-│   │   │   └── ProductCard.tsx        # Atomic hypercar card with live stock badge & CTA rules
+│   │   │   ├── CatalogModal.tsx       # Detailed specifications viewer modal with stock badge & accessible focus trap
+│   │   │   └── ProductCard.tsx        # Atomic hypercar card with live stock badge & contextual CTA aria-labels
 │   │   ├── layout/
-│   │   │   ├── Hero.tsx               # Full-bleed video background hero banner
-│   │   │   ├── Navbar.tsx             # Glassmorphism header with mobile drawer
-│   │   │   └── SiteFooter.tsx         # Footer with discrete Admin link
+│   │   │   ├── Hero.tsx               # Full-bleed video background hero banner (semantic section)
+│   │   │   ├── Navbar.tsx             # Glassmorphism header with mobile drawer & semantic nav
+│   │   │   └── SiteFooter.tsx         # Footer with discrete Admin link & privacy/cookie preference triggers
 │   │   └── ui/
+│   │       ├── CookieBanner.tsx       # GDPR & Ley 21.719 cookie consent banner (useSyncExternalStore)
 │   │       ├── Icons.tsx              # Vector SVG icon library
+│   │       ├── PrivacyModal.tsx       # ARCO self-service data export & erasure request dialog
 │   │       ├── ThemeToggle.tsx        # Brutalist theme toggle atom (Cyan // Corsa)
 │   │       └── ToastNotification.tsx  # Global feedback toast notification
+│   ├── hooks/
+│   │   └── useAccessibleDialog.ts     # Reusable focus trap & Escape keyboard management hook
+│   └── types/
+│       └── privacy.ts                 # Privacy request contracts & cookie preferences definitions
 │   ├── context/
 │   │   ├── CartContext.tsx            # Context provider for global cart state
 │   │   └── ThemeContext.tsx           # Context provider for dynamic telemetry theme switching
@@ -238,7 +247,13 @@ vault-hypercars/
 - `app/admin/dashboard/page.tsx`: Responsive telemetry header, real-time KPI overview, and catalog inventory table.
 - `DashboardAnalytics.tsx`: Fetches and renders live database metrics in telemetry HUD cards (`font-mono tabular-nums text-accent`).
 - `CatalogTable.tsx`: Displays inventory with monospace metrics, status indicators, and actions.
-- `AdminModals.tsx`: Brutalist form modal and double confirmation dialog with numerical stock input `<input type="number" min="0" name="stock" />`.
+- `AdminModals.tsx`: Brutalist form modal and double confirmation dialog with numerical stock input `<input type="number" min="0" name="stock" />` and explicit `<label htmlFor={id}>` / `<input id={id}>` bindings.
+
+### 6.5 Web Compliance, Accessibility & Data Privacy Components
+- `CookieBanner.tsx`: GDPR & Ley 21.719 cookie consent banner providing equal prominence "Aceptar Todo" / "Rechazar No Esenciales" actions, zero pre-checked options, and reactive hydration via `useSyncExternalStore`.
+- `PrivacyModal.tsx`: Self-service ARCO modal allowing users to download their personal order data as sanitized JSON or exercise their right to erasure.
+- `useAccessibleDialog.ts`: Native React hook managing modal focus trapping (`Tab` / `Shift+Tab`), `Escape` key dismissal, and restoring focus to trigger buttons without external UI runtime bloat.
+- `POST /api/privacy/request`: Privacy handler supporting data export and atomic email anonymization (`anonymized_<UUID>@vault.invalid`) preserving statutory fiscal transaction history.
 
 ---
 
@@ -267,7 +282,9 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_51..."
 ## 8. Non-Functional Constraints & Quality Standards
 
 1. **Telemetry Brutalist Visual Language**: 100% adherence to Carbon Gray/Titanium White/Dynamic Accent (Cyan/Corsa) design system with monospaced telemetry metrics and zero gold remnants.
-2. **Backend & Data Immutability**: Strict zero-mutation policy for `prisma/schema.prisma` and server endpoints `app/api/`.
+2. **Backend & Data Immutability**: Strict zero-mutation policy for `prisma/schema.prisma` and server endpoints `app/api/` (except authorized compliance endpoints).
 3. **Type Safety & Linting**: Zero errors in `npx tsc --noEmit` and `pnpm lint`.
 4. **Transaction Safety**: Atomic database transactions (`prisma.$transaction`) MUST be enforced for all checkout pre-checks and webhook stock decrements.
 5. **Idempotency**: Stripe API calls MUST include `idempotencyKey` headers to guarantee zero duplicate charges or orders.
+6. **Web Accessibility (WCAG 2.2 AA / Chilean Law 20.422)**: Color contrast ratio >= 4.5:1 across all themes (Corsa accent contrast at 6.76:1), native accessible dialog focus trapping, `<main id="main-content">` landmark, and explicit programmatic label association.
+7. **Data Privacy & User Rights (GDPR / Chilean Law 21.719)**: Symmetric consent management without dark patterns or pre-checked checkboxes, rate-limited privacy endpoints, anti-enumeration protections, and atomic irreversible anonymization preserving accounting records.

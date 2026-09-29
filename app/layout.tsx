@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "./context/ThemeContext";
+import { CookieBanner } from "./components/ui/CookieBanner";
+import { PrivacyModal } from "./components/ui/PrivacyModal";
 import "./globals.css";
 
 const fontDisplay = Space_Grotesk({
@@ -49,7 +51,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-50 font-display">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <CookieBanner />
+          <PrivacyModal />
+        </ThemeProvider>
       </body>
     </html>
   );

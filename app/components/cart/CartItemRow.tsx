@@ -42,6 +42,7 @@ export function CartItemRow({
           <div className="flex items-center border border-zinc-800 rounded-none bg-zinc-950 font-mono">
             <button
               onClick={() => onQuantityChange(item.id, Math.max(1, item.quantity - 1))}
+              aria-label={`Disminuir cantidad de ${item.brand} ${item.name}`}
               className="px-2 py-0.5 text-xs text-zinc-300 hover:text-white cursor-pointer"
             >
               -
@@ -49,6 +50,7 @@ export function CartItemRow({
             <span className="px-2 text-xs font-bold text-white tabular-nums">{item.quantity}</span>
             <button
               onClick={() => onQuantityChange(item.id, item.quantity + 1)}
+              aria-label={`Aumentar cantidad de ${item.brand} ${item.name}`}
               className="px-2 py-0.5 text-xs text-zinc-300 hover:text-white cursor-pointer"
             >
               +
@@ -58,6 +60,7 @@ export function CartItemRow({
 
         <button
           onClick={() => onRemove(item.id)}
+          aria-label={`Eliminar ${item.brand} ${item.name} del carrito`}
           className="text-xs text-rose-400 hover:text-rose-300 px-3 py-1.5 rounded-none bg-rose-500/10 border border-rose-500/30 cursor-pointer font-mono font-semibold uppercase"
         >
           ELIMINAR

@@ -46,12 +46,16 @@ test.describe('Checkout Flow', () => {
 
     // 4. Verify request payload matching { items: [...], idempotencyKey: ... }
     expect(capturedPayload).toBeTruthy();
-    expect(Array.isArray(capturedPayload?.items)).toBe(true);
-    expect(capturedPayload!.items!.length).toBeGreaterThan(0);
-    expect(capturedPayload!.items![0]).toHaveProperty('id');
-    expect(capturedPayload!.items![0]).toHaveProperty('quantity');
-    expect(capturedPayload).toHaveProperty('idempotencyKey');
-    expect(typeof capturedPayload!.idempotencyKey).toBe('string');
+    const payload = capturedPayload as unknown as {
+      items?: Array<{ id: string; quantity: number }>;
+      idempotencyKey?: string;
+    };
+    expect(Array.isArray(payload.items)).toBe(true);
+    expect(payload.items!.length).toBeGreaterThan(0);
+    expect(payload.items![0]).toHaveProperty('id');
+    expect(payload.items![0]).toHaveProperty('quantity');
+    expect(payload).toHaveProperty('idempotencyKey');
+    expect(typeof payload.idempotencyKey).toBe('string');
   });
 
   test('handles checkout gateway failure with error banner and re-enables button', async ({ page }) => {
