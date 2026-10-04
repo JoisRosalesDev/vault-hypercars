@@ -15,22 +15,35 @@ export function Hero({
   headline = "LA CÚSPIDE DE LA INGENIERÍA AUTOMOTRIZ",
   description = "Adquiere los hiperautos más exclusivos del planeta. Ingeniería de competición, diseño radical y velocidad pura sin compromisos."
 }: HeroProps) {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (mediaQuery.matches && videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, []);
+
   return (
     <div className="relative w-full min-h-[85vh] flex flex-col justify-center overflow-hidden bg-zinc-950">
       {/* Background Loop Video */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
-        preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-30 filter contrast-125 saturate-125 pointer-events-none motion-reduce:hidden"
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-55 filter contrast-110 saturate-125 pointer-events-none"
       >
         <source src={encodeURI(videoSrc)} type="video/mp4" />
       </video>
 
-      {/* Dark Radial Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/80 z-1 pointer-events-none" />
+      {/* Dark Radial Gradient Overlay: transparent top/center to blend into dark footer */}
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/40 z-1 pointer-events-none" />
 
       {/* Hero Content */}
       <section aria-label="Introducción" className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-24 flex-1 flex flex-col justify-center">
