@@ -23,9 +23,10 @@ export function Hero({
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-30 filter contrast-125 saturate-125 pointer-events-none"
+        preload="metadata"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-30 filter contrast-125 saturate-125 pointer-events-none motion-reduce:hidden"
       >
-        <source src={videoSrc} type="video/mp4" />
+        <source src={encodeURI(videoSrc)} type="video/mp4" />
       </video>
 
       {/* Dark Radial Gradient Overlay */}
@@ -56,7 +57,7 @@ export function Hero({
               href="#catalogo"
               className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-accent text-accent-contrast text-xs font-display font-black tracking-[0.2em] rounded-none hover:bg-accent-hover active:scale-95 transition-all duration-150 shadow-[0_0_20px_var(--color-accent-glow)] hover:shadow-[0_0_30px_var(--color-accent-glow)] text-center cursor-pointer min-h-[48px] flex items-center justify-center uppercase"
             >
-              VER COMPRA DE AUTOS
+              EXPLORAR HIPERAUTOS VIP
             </a>
           </div>
         </div>

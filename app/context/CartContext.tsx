@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useCallback, useMemo } from "react";
 import { CartItem, Currency, AddToCartInput } from "../types/cart";
 import { formatPrice as formatPriceUtil } from "../lib/currency";
 
@@ -25,7 +25,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  const addToCart = (item: AddToCartInput) => {
+  const addToCart = useCallback((item: AddToCartInput) => {
     setCart((prev) => {
       const existing = prev.find((i) => i.id === item.id);
       if (existing) {
@@ -36,33 +36,33 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     setToastMessage(`¡${item.name} añadido al carrito!`);
     setTimeout(() => setToastMessage(null), 3000);
-  };
+  }, []);
 
-  const removeFromCart = (id: string) => {
+  const removeFromCart = useCallback((id: string) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
-  };
+  }, []);
 
-  const clearCart = () => setCart([]);
+  const clearCart = useCallback(() => setCart([]), []);
 
-  const formatPrice = (priceUSD: number, cOverride?: Currency) => {
+  const formatPrice = useCallback((priceUSD: number, cOverride?: Currency) => {
     return formatPriceUtil(priceUSD, cOverride || currency);
-  };
+  }, [currency]);
+
+  const contextValue = useMemo(() => ({
+    cart,
+    currency,
+    setCurrency,
+    addToCart,
+    removeFromCart,
+    clearCart,
+    isCartOpen,
+    setIsCartOpen,
+    formatPrice,
+    toastMessage
+  }), [cart, currency, isCartOpen, toastMessage, addToCart, removeFromCart, clearCart, formatPrice]);
 
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        currency,
-        setCurrency,
-        addToCart,
-        removeFromCart,
-        clearCart,
-        isCartOpen,
-        setIsCartOpen,
-        formatPrice,
-        toastMessage
-      }}
-    >
+    <CartContext.Provider value={contextValue}>
       {children}
     </CartContext.Provider>
   );

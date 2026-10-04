@@ -18,11 +18,11 @@ export function CatalogTable({
 }: CatalogTableProps) {
   return (
     <section className="p-6 sm:p-8 rounded-none sm:rounded-sm bg-zinc-950 border border-zinc-800">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <h2 className="text-xl font-display font-black text-white tracking-wider">GESTIÓN DE CATÁLOGO ACTIVO</h2>
         <button
           onClick={onOpenCreate}
-          className="px-5 py-2.5 bg-accent text-accent-contrast font-display font-black text-xs tracking-widest rounded-none hover:bg-accent-hover transition-all duration-150 cursor-pointer shadow-[0_0_15px_var(--color-accent-glow)]"
+          className="w-full sm:w-auto px-5 py-3 min-h-[44px] bg-accent text-accent-contrast font-display font-black text-xs tracking-widest rounded-none hover:bg-accent-hover transition-all duration-150 cursor-pointer shadow-[0_0_15px_var(--color-accent-glow)] flex items-center justify-center"
         >
           + NUEVO HIPERAUTO
         </button>
@@ -70,13 +70,13 @@ export function CatalogTable({
                 <td className="py-4 px-4 text-right space-x-2">
                   <button
                     onClick={() => onOpenEdit(item)}
-                    className="px-3.5 py-1.5 rounded-none text-xs font-mono font-bold bg-zinc-900 border border-zinc-700 text-zinc-300 hover:border-accent hover:text-accent hover:shadow-[0_0_10px_var(--color-accent-glow)] transition-all duration-150 cursor-pointer"
+                    className="px-3.5 py-2 min-h-[38px] rounded-none text-xs font-mono font-bold bg-zinc-900 border border-zinc-700 text-zinc-300 hover:border-accent hover:text-accent hover:shadow-[0_0_10px_var(--color-accent-glow)] transition-all duration-150 cursor-pointer"
                   >
                     EDITAR INFORMACIÓN
                   </button>
                   <button
                     onClick={() => onRequestDelete(item)}
-                    className="px-3 py-1.5 rounded-none text-xs font-mono font-bold bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 transition-all duration-150 cursor-pointer"
+                    className="px-3.5 py-2 min-h-[38px] rounded-none text-xs font-mono font-bold bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 transition-all duration-150 cursor-pointer"
                   >
                     ELIMINAR
                   </button>

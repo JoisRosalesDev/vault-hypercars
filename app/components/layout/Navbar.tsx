@@ -72,7 +72,7 @@ export function Navbar({
                 onClick={() => handleCurrencyChange(c)}
                 aria-label={`Seleccionar divisa ${c}`}
                 aria-pressed={currentCurrency === c}
-                className={`px-2 py-0.5 text-[10px] font-mono font-bold transition-colors cursor-pointer ${
+                className={`px-3 py-1.5 min-h-[32px] text-[11px] font-mono font-bold transition-colors cursor-pointer ${
                   currentCurrency === c
                     ? "bg-accent text-accent-contrast shadow-[0_0_10px_var(--color-accent-glow)]"
                     : "text-zinc-400 hover:text-white"
@@ -147,7 +147,7 @@ export function Navbar({
                   }}
                   aria-label={`Seleccionar divisa ${c}`}
                   aria-pressed={currentCurrency === c}
-                  className={`px-2.5 py-1 rounded-none text-xs font-mono font-bold transition-colors ${
+                  className={`px-3.5 py-2.5 min-h-[44px] rounded-none text-xs font-mono font-bold transition-colors cursor-pointer flex items-center justify-center ${
                     currentCurrency === c
                       ? "bg-accent text-accent-contrast"
                       : "text-zinc-400 hover:text-white border border-zinc-800"
