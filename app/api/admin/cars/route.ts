@@ -53,6 +53,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required hypercar fields" }, { status: 400 });
     }
 
+    if (typeof image === "string" && image.startsWith("blob:")) {
+      return NextResponse.json(
+        { error: "Formato de imagen inválido: no se pueden persistir URLs locales blob efímeras." },
+        { status: 400 }
+      );
+    }
+
     const newCar = await withTimeout(
       prisma.hypercar.create({
         data: {

@@ -21,15 +21,15 @@ test.describe('Admin Authentication and Access Flow', () => {
     await expect(page.locator('text=PANEL DE CONTROL // AUTENTICACIÓN RESTRINGIDA')).toBeVisible();
   });
 
-  test('displays access denied state with authorized admin email joisrosafer@gmail.com', async ({ page }) => {
+  test('displays access denied state with secure message', async ({ page }) => {
     await page.goto('/admin/login?error=AccessDenied');
 
     // 1. Verify 'ACCESO DENEGADO' banner is visible
     const deniedBanner = page.locator('text=ACCESO DENEGADO');
     await expect(deniedBanner).toBeVisible();
 
-    // 2. Verify it specifies authorized admin account 'joisrosafer@gmail.com'
-    await expect(page.locator('text=joisrosafer@gmail.com')).toBeVisible();
+    // 2. Verify it displays secure authorization message without leaking email
+    await expect(page.locator('text=/no tiene privilegios de administrador/i')).toBeVisible();
   });
 
   test('navigates back to home page when clicking ← VOLVER AL INICIO', async ({ page }) => {

@@ -30,6 +30,13 @@ export async function PUT(
     const { id } = params;
     const body = await req.json();
 
+    if (typeof body.image === "string" && body.image.startsWith("blob:")) {
+      return NextResponse.json(
+        { error: "Formato de imagen inválido: no se pueden persistir URLs locales blob efímeras." },
+        { status: 400 }
+      );
+    }
+
     const updatedCar = await withTimeout(
       prisma.hypercar.update({
         where: { id },

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 import { CatalogItem, Brand, ItemStatus } from "../../types/catalog";
 import { CatalogFormData, ConfirmModalState, DashboardMetrics } from "../../types/admin";
 import { DashboardAnalytics } from "../../components/admin/DashboardAnalytics";
@@ -158,11 +159,31 @@ export default function AdminDashboardPage() {
     };
   }, [router]);
 
-  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setFormData((prev) => ({ ...prev, image: url }));
+    if (!file) return;
+
+    try {
+      const data = new FormData();
+      data.append("file", file);
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: data,
+      });
+
+      if (!res.ok) {
+        const errJson = await res.json().catch(() => ({}));
+        throw new Error(errJson.error || "Error al subir la imagen");
+      }
+
+      const resData = await res.json();
+      if (resData.url) {
+        setFormData((prev) => ({ ...prev, image: resData.url }));
+      }
+    } catch (err: unknown) {
+      console.error("[Image Upload Error]:", err);
+      setApiError((err as Error).message || "No se pudo subir la imagen.");
     }
   };
 
@@ -332,9 +353,13 @@ export default function AdminDashboardPage() {
           </span>
         </div>
 
-        <Link href="/" className="text-xs font-mono text-zinc-400 hover:text-white font-semibold shrink-0">
+        <button
+          type="button"
+          onClick={() => signOut({ callbackUrl: "/" })}
+          className="text-xs font-mono text-zinc-400 hover:text-white font-semibold shrink-0 cursor-pointer bg-transparent border-0"
+        >
           CERRAR SESIÓN →
-        </Link>
+        </button>
       </header>
 
       <main className="max-w-7xl mx-auto px-8 py-10 space-y-10">
