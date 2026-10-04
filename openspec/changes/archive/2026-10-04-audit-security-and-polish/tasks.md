@@ -1,0 +1,30 @@
+# Tasks: Audit Remediations, Security, and Polish
+
+- [x] 1. Security & Persistence Remediations (P0)
+  - [x] 1.1 Sanitize admin login error message in `app/admin/login/page.tsx`
+  - [x] 1.2 Update integration test in `tests/e2e/auth-flow.spec.ts`
+  - [x] 1.3 Implement authenticated upload route `app/api/admin/upload/route.ts`
+  - [x] 1.4 Block ephemeral `blob:` URLs in car persistence API endpoints
+  - [x] 1.5 Connect NextAuth `signOut()` to dashboard header
+- [x] 2. Accessibility & Modal Focus Traps (P1)
+  - [x] 2.1 Resolve nested focus trap collision in `app/components/admin/AdminModals.tsx`
+  - [x] 2.2 Make image file upload input keyboard-accessible
+  - [x] 2.3 Add `aria-pressed` to `CatalogFilter.tsx` and `ThemeToggle.tsx`
+  - [x] 2.4 Add `role="status"` and `aria-live="polite"` to `ToastNotification.tsx`
+- [x] 3. Structural Cleanup & Barrel Pruning (P2/P3)
+  - [x] 3.1 Remove redundant barrel files (`app/components/CartDrawer.tsx`, `Catalogo.tsx`, `Icons.tsx`)
+  - [x] 3.2 Remove orphan `app/components/Showroom.tsx` and all navigation links
+- [x] 4. UI Polish, Tokens & Hero Video (P1/P2)
+  - [x] 4.1 Replace unaligned styles with brutalist tokens (`bg-zinc-950`, `rounded-none`) in `CatalogGrid.tsx`
+  - [x] 4.2 Increase touch targets to ≥44px for mobile devices
+  - [x] 4.3 Optimize `ProductCard.tsx` with `loading="lazy"` and async decoding
+  - [x] 4.4 Restore `Hero.tsx` video visibility, pause gracefully on reduced motion, and calibrate contrast
+- [x] 5. Currency Model Restriction
+  - [x] 5.1 Restrict `Currency` type union to `"USD" | "EUR" | "CLP"`
+  - [x] 5.2 Configure exchange rates in `app/lib/currency.ts`
+  - [x] 5.3 Update currency selector lists in `Navbar.tsx` and `CartDrawer.tsx`
+  - [x] 5.4 Update unit tests in `tests/unit/currency.test.ts`
+- [x] 6. Final Integration & Verification
+  - [x] 6.1 Execute Vitest test suite (20/20 green)
+  - [x] 6.2 Execute TypeScript compilation check (`tsc --noEmit`, 0 errors)
+  - [x] 6.3 Merge to `main` and sync remote repository

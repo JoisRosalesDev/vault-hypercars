@@ -31,6 +31,8 @@ vault-hypercars/
 │   │   │   └── stripe/
 │   │   │       └── route.ts     # Stripe webhook endpoint (checkout.session.completed & expired)
 │   │   └── admin/
+│   │       ├── upload/
+│   │       │   └── route.ts     # Protected car image upload endpoint (validates files, blocks ephemeral blobs)
 │   │       ├── cars/
 │   │       │   ├── route.ts     # Protected GET & POST hypercar endpoint with stock management
 │   │       │   └── [id]/
@@ -115,12 +117,12 @@ vault-hypercars/
 
 ### 2.3 Cart, Currency & Checkout Domain (`app/types/cart.ts` & `app/lib/currency.ts`)
 - **Types**:
-  - `Currency`: `'USD' | 'EUR' | 'GBP' | 'AED'`
-  - `CurrencyRate`: Exchange rates relative to USD (`USD: 1.0`, `EUR: 0.92`, `GBP: 0.79`, `AED: 3.67`).
+  - `Currency`: `'USD' | 'EUR' | 'CLP'`
+  - `CurrencyRate`: Exchange rates relative to USD (`USD: 1.0`, `EUR: 0.92`, `CLP: 950` with symbol `'CLP $'`).
   - `CartItem`: Extends `CatalogItem` with `quantity: number`.
   - `CheckoutPayload`: `{ items: { id: string; quantity: number }[]; idempotencyKey: string }`.
 - **Currency Helpers (`currency.ts`)**:
-  - `formatPrice(amountInUSD: number, targetCurrency: Currency)`: Formats price into active currency format.
+  - `formatPrice(amountInUSD: number, targetCurrency: Currency)`: Formats price into active currency format (integer precision without decimal cents for CLP).
 
 ---
 
@@ -143,6 +145,12 @@ vault-hypercars/
 - **Execution Timeouts (`app/lib/timeout.ts`)**:
   - Route segment configuration `export const maxDuration = 10;`.
   - Async database operation wrapper returning HTTP 504 Gateway Timeout if Prisma query exceeds 10 seconds.
+
+### 3.3 Media Persistence & Asset Upload Security (`app/api/admin/upload/route.ts`)
+- **Admin Verification**: Only authenticated admin sessions can upload assets via NextAuth validation.
+- **MIME & Size Enforcement**: Rejects non-image files and enforces maximum upload size limits.
+- **Persistence Guarantee**: Replaces ephemeral client-side `blob:` URLs with persistent file paths under `public/uploads`, preventing database corruption upon tab destruction.
+- **Sanitized Auth Error States**: `app/admin/login/page.tsx` renders generic authentication failure messages without exposing administrator emails.
 
 ---
 
@@ -252,7 +260,8 @@ vault-hypercars/
 ### 6.5 Web Compliance, Accessibility & Data Privacy Components
 - `CookieBanner.tsx`: GDPR & Ley 21.719 cookie consent banner providing equal prominence "Aceptar Todo" / "Rechazar No Esenciales" actions, zero pre-checked options, and reactive hydration via `useSyncExternalStore`.
 - `PrivacyModal.tsx`: Self-service ARCO modal allowing users to download their personal order data as sanitized JSON or exercise their right to erasure.
-- `useAccessibleDialog.ts`: Native React hook managing modal focus trapping (`Tab` / `Shift+Tab`), `Escape` key dismissal, and restoring focus to trigger buttons without external UI runtime bloat.
+- `useAccessibleDialog.ts`: Native React hook managing modal focus trapping (`Tab` / `Shift+Tab`), `Escape` key dismissal, and restoring focus to trigger buttons without external UI runtime bloat. Pauses parent dialog focus trap when nested confirmation modal is open (`isOpen && !childModalOpen`).
+- `Hero.tsx`: High-impact video loop with programmatic pause on `(prefers-reduced-motion: reduce)` preserving frame visibility without black screen void, calibrated 55% opacity, and softened gradient overlay for WCAG AAA text contrast.
 - `POST /api/privacy/request`: Privacy handler supporting data export and atomic email anonymization (`anonymized_<UUID>@vault.invalid`) preserving statutory fiscal transaction history.
 
 ---
