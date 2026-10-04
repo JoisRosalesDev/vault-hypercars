@@ -16,20 +16,24 @@ export function CatalogFilter({ selectedBrand, onSelectBrand }: CatalogFilterPro
   ];
 
   return (
-    <div className="flex flex-wrap gap-2">
-      {tabs.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => onSelectBrand(tab.id)}
-          className={`px-4 py-2 text-xs font-mono font-bold tracking-wider transition-all duration-150 border cursor-pointer rounded-none ${
-            selectedBrand.toLowerCase() === tab.id.toLowerCase()
-              ? "bg-accent text-accent-contrast border-accent shadow-[0_0_12px_var(--color-accent-glow)]"
-              : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white"
-          }`}
-        >
-          {tab.label}
-        </button>
-      ))}
+    <div role="group" aria-label="Filtrar vehículos por marca" className="flex flex-wrap gap-2">
+      {tabs.map((tab) => {
+        const isSelected = selectedBrand.toLowerCase() === tab.id.toLowerCase();
+        return (
+          <button
+            key={tab.id}
+            onClick={() => onSelectBrand(tab.id)}
+            aria-pressed={isSelected}
+            className={`px-4 py-2 text-xs font-mono font-bold tracking-wider transition-all duration-150 border cursor-pointer rounded-none ${
+              isSelected
+                ? "bg-accent text-accent-contrast border-accent shadow-[0_0_12px_var(--color-accent-glow)]"
+                : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white"
+            }`}
+          >
+            {tab.label}
+          </button>
+        );
+      })}
     </div>
   );
 }

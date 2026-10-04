@@ -40,13 +40,13 @@ export function AdminModals({
   const confirmDialogRef = useRef<HTMLDivElement>(null);
 
   useAccessibleDialog({
-    isOpen: isEditOpen,
+    isOpen: isEditOpen && !confirmModal.isOpen,
     onClose: onCloseEdit,
     dialogRef: editDialogRef
   });
 
   useAccessibleDialog({
-    isOpen: isCreateOpen,
+    isOpen: isCreateOpen && !confirmModal.isOpen,
     onClose: onCloseCreate,
     dialogRef: createDialogRef
   });
@@ -166,9 +166,9 @@ export function AdminModals({
                     onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                     className="flex-1 px-4 py-2.5 rounded-none bg-zinc-900/80 border border-zinc-800 text-sm text-white font-mono focus:border-accent focus:outline-none transition-colors"
                   />
-                  <label htmlFor="edit-car-image-file" className="px-4 py-2.5 rounded-none bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-accent text-zinc-300 hover:text-accent text-xs font-mono font-bold cursor-pointer flex items-center justify-center gap-1.5 transition-colors">
+                  <label htmlFor="edit-car-image-file" className="px-4 py-2.5 rounded-none bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-accent text-zinc-300 hover:text-accent text-xs font-mono font-bold cursor-pointer flex items-center justify-center gap-1.5 transition-colors focus-within:ring-2 focus-within:ring-accent focus-within:border-accent">
                     <FolderIcon className="w-4 h-4" /> SUBIR
-                    <input id="edit-car-image-file" type="file" accept="image/*" onChange={handleImageFileChange} className="hidden" />
+                    <input id="edit-car-image-file" type="file" accept="image/*" onChange={handleImageFileChange} className="sr-only" aria-label="Subir archivo de imagen para edición de vehículo" />
                   </label>
                 </div>
               </div>
@@ -342,9 +342,9 @@ export function AdminModals({
                     onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                     className="flex-1 px-4 py-2.5 rounded-none bg-zinc-900/80 border border-zinc-800 text-sm text-white font-mono focus:border-accent focus:outline-none transition-colors"
                   />
-                  <label htmlFor="create-car-image-file" className="px-4 py-2.5 rounded-none bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-accent text-zinc-300 hover:text-accent text-xs font-mono font-bold cursor-pointer flex items-center justify-center gap-1.5 transition-colors">
+                  <label htmlFor="create-car-image-file" className="px-4 py-2.5 rounded-none bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-accent text-zinc-300 hover:text-accent text-xs font-mono font-bold cursor-pointer flex items-center justify-center gap-1.5 transition-colors focus-within:ring-2 focus-within:ring-accent focus-within:border-accent">
                     <FolderIcon className="w-4 h-4" /> SUBIR
-                    <input id="create-car-image-file" type="file" accept="image/*" onChange={handleImageFileChange} className="hidden" />
+                    <input id="create-car-image-file" type="file" accept="image/*" onChange={handleImageFileChange} className="sr-only" aria-label="Subir archivo de imagen para nuevo vehículo" />
                   </label>
                 </div>
               </div>
