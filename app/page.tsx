@@ -4,6 +4,7 @@ import React from "react";
 import { CartProvider } from "./context/CartContext";
 import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/layout/Hero";
+import Showroom from "./components/Showroom";
 import { Catalogo } from "./components/catalog/Catalogo";
 import { SiteFooter } from "./components/layout/SiteFooter";
 import { CartDrawer } from "./components/cart/CartDrawer";
@@ -22,6 +23,9 @@ function MainApp() {
       <main id="main-content" className="flex-1 flex flex-col">
         {/* Hero Section with Video Background */}
         <Hero />
+
+        {/* VIP Virtual Showroom */}
+        <Showroom />
 
         {/* Catalog */}
         <Catalogo />

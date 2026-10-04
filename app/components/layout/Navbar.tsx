@@ -52,6 +52,9 @@ export function Navbar({
           <Link href="/" className="text-white hover:text-accent transition-colors">
             INICIO
           </Link>
+          <Link href="#showroom" className="hover:text-white transition-colors">
+            SHOWROOM
+          </Link>
           <Link href="#catalogo" className="hover:text-white transition-colors">
             CATÁLOGO
           </Link>
@@ -115,6 +118,13 @@ export function Navbar({
             className="block text-sm font-bold tracking-widest text-white hover:text-accent py-2 border-b border-zinc-900"
           >
             INICIO
+          </Link>
+          <Link
+            href="#showroom"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block text-sm font-bold tracking-widest text-zinc-300 hover:text-white py-2 border-b border-zinc-900"
+          >
+            SHOWROOM VIRTUAL
           </Link>
           <Link
             href="#catalogo"

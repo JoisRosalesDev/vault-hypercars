@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
-import { SparklesIcon, VolumeIcon, VolumeMuteIcon, ShoppingCartIcon, ZapIcon, FlameIcon, GaugeIcon, ShieldCheckIcon } from "./Icons";
+import { SparklesIcon, VolumeIcon, VolumeMuteIcon, ShoppingCartIcon, ZapIcon, FlameIcon, GaugeIcon, ShieldCheckIcon } from "./ui/Icons";
 
 interface Hypercar {
   id: string;
@@ -92,20 +92,24 @@ export default function Showroom() {
         </div>
 
         {/* Model Switcher */}
-        <div className="flex flex-wrap gap-2">
-          {hypercars.map((car) => (
-            <button
-              key={car.id}
-              onClick={() => setSelectedCar(car)}
-              className={`px-4 py-2 rounded-none text-xs font-mono font-bold tracking-wider transition-all duration-150 border cursor-pointer uppercase ${
-                selectedCar.id === car.id
-                  ? "bg-accent text-accent-contrast border-accent shadow-[0_0_15px_var(--color-accent-glow)]"
-                  : "bg-zinc-900/60 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white"
-              }`}
-            >
-              {car.brand.toUpperCase()} — {car.name.split(' ').slice(1).join(' ')}
-            </button>
-          ))}
+        <div role="group" aria-label="Seleccionar modelo en showroom" className="flex flex-wrap gap-2">
+          {hypercars.map((car) => {
+            const isSelected = selectedCar.id === car.id;
+            return (
+              <button
+                key={car.id}
+                onClick={() => setSelectedCar(car)}
+                aria-pressed={isSelected}
+                className={`px-4 py-2 rounded-none text-xs font-mono font-bold tracking-wider transition-all duration-150 border cursor-pointer uppercase ${
+                  isSelected
+                    ? "bg-accent text-accent-contrast border-accent shadow-[0_0_15px_var(--color-accent-glow)]"
+                    : "bg-zinc-900/60 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white"
+                }`}
+              >
+                {car.brand.toUpperCase()} — {car.name.split(' ').slice(1).join(' ')}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -186,8 +190,10 @@ export default function Showroom() {
         {/* Right Column Specs */}
         <div className="lg:col-span-5 rounded-none sm:rounded-sm bg-zinc-900/50 border border-zinc-800 p-8 flex flex-col justify-between backdrop-blur-xl">
           <div>
-            <div className="flex gap-2 border-b border-zinc-800 pb-4 mb-6">
+            <div role="tablist" aria-label="Categorías de telemetría" className="flex gap-2 border-b border-zinc-800 pb-4 mb-6">
               <button
+                role="tab"
+                aria-selected={activeTab === "specs"}
                 onClick={() => setActiveTab("specs")}
                 className={`px-4 py-2 text-xs font-mono font-bold tracking-wider rounded-none transition-colors cursor-pointer uppercase ${
                   activeTab === "specs" ? "bg-accent text-accent-contrast shadow-[0_0_10px_var(--color-accent-glow)]" : "text-zinc-500 hover:text-white"
@@ -196,6 +202,8 @@ export default function Showroom() {
                 ESPECIFICACIONES
               </button>
               <button
+                role="tab"
+                aria-selected={activeTab === "aerodynamics"}
                 onClick={() => setActiveTab("aerodynamics")}
                 className={`px-4 py-2 text-xs font-mono font-bold tracking-wider rounded-none transition-colors cursor-pointer uppercase ${
                   activeTab === "aerodynamics" ? "bg-accent text-accent-contrast shadow-[0_0_10px_var(--color-accent-glow)]" : "text-zinc-500 hover:text-white"
