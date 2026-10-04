@@ -52,9 +52,6 @@ export function Navbar({
           <Link href="/" className="text-white hover:text-accent transition-colors">
             INICIO
           </Link>
-          <Link href="#showroom" className="hover:text-white transition-colors">
-            SHOWROOM
-          </Link>
           <Link href="#catalogo" className="hover:text-white transition-colors">
             CATÁLOGO
           </Link>
@@ -66,7 +63,7 @@ export function Navbar({
 
           {/* Currency Switcher */}
           <div role="group" aria-label="Selector de divisa" className="hidden sm:flex items-center p-0.5 bg-zinc-950 border border-zinc-800 rounded-none">
-            {(["USD", "EUR", "GBP", "AED"] as Currency[]).map((c) => (
+            {(["USD", "EUR", "CLP"] as Currency[]).map((c) => (
               <button
                 key={c}
                 onClick={() => handleCurrencyChange(c)}
@@ -120,13 +117,6 @@ export function Navbar({
             INICIO
           </Link>
           <Link
-            href="#showroom"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-bold tracking-widest text-zinc-300 hover:text-white py-2 border-b border-zinc-900"
-          >
-            SHOWROOM VIRTUAL
-          </Link>
-          <Link
             href="#catalogo"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block text-sm font-bold tracking-widest text-zinc-300 hover:text-white py-2"
@@ -138,7 +128,7 @@ export function Navbar({
           <div className="pt-3 border-t border-zinc-800 flex items-center justify-between">
             <span className="text-xs text-zinc-400 font-mono tracking-wider">DIVISA:</span>
             <div role="group" aria-label="Selector de divisa móvil" className="flex gap-1">
-              {(["USD", "EUR", "GBP", "AED"] as Currency[]).map((c) => (
+              {(["USD", "EUR", "CLP"] as Currency[]).map((c) => (
                 <button
                   key={c}
                   onClick={() => {

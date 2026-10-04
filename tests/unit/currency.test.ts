@@ -13,20 +13,15 @@ describe('currency utility', () => {
     expect(formatPrice(1000000, 'EUR')).toBe(`€${(920000).toLocaleString()}`);
   });
 
-  it('converts and formats AED prices correctly', () => {
-    const formatted = formatPrice(1000, 'AED');
-    expect(formatted).toBe(`AED ${(3670).toLocaleString()}`);
-    expect(formatPrice(1000000, 'AED')).toBe(`AED ${(3670000).toLocaleString()}`);
-  });
-
-  it('converts and formats GBP prices correctly', () => {
-    expect(formatPrice(100, 'GBP')).toBe(`£${(78).toLocaleString()}`);
+  it('converts and formats CLP prices correctly', () => {
+    const formatted = formatPrice(1000, 'CLP');
+    expect(formatted).toBe(`CLP $${(950000).toLocaleString()}`);
+    expect(formatPrice(1000000, 'CLP')).toBe(`CLP $${(950000000).toLocaleString()}`);
   });
 
   it('exposes correct rate exchange definitions', () => {
     expect(CURRENCY_RATES.USD.rate).toBe(1.0);
     expect(CURRENCY_RATES.EUR.rate).toBe(0.92);
-    expect(CURRENCY_RATES.GBP.rate).toBe(0.78);
-    expect(CURRENCY_RATES.AED.rate).toBe(3.67);
+    expect(CURRENCY_RATES.CLP.rate).toBe(950);
   });
 });

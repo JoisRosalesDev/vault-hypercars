@@ -111,7 +111,7 @@ export function CartDrawer() {
           <div className="flex items-center justify-between mb-6 p-3 rounded-none bg-zinc-900/40 border border-zinc-800">
             <span className="text-xs font-mono text-zinc-400 font-medium tracking-wider">DIVISA DE PAGO:</span>
             <div className="flex gap-1">
-              {(["USD", "EUR", "GBP", "AED"] as Currency[]).map((c) => (
+              {(["USD", "EUR", "CLP"] as Currency[]).map((c) => (
                 <button
                   key={c}
                   onClick={() => setCurrency(c)}

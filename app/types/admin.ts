@@ -1,4 +1,5 @@
 import { Brand, ItemStatus, CatalogItem } from "./catalog";
+import { Currency } from "./cart";
 
 export type AdminModalAction = "create" | "update" | "delete";
 
@@ -10,7 +11,7 @@ export interface CatalogFormData {
   power: string;
   topSpeed: string;
   priceUSD: number;
-  currency?: "USD" | "EUR" | "GBP" | "AED";
+  currency?: Currency;
   status: ItemStatus;
   stock: number;
   description: string;

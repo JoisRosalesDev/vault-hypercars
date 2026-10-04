@@ -1,6 +1,6 @@
 import { Brand } from "./catalog";
 
-export type Currency = "USD" | "EUR" | "GBP" | "AED";
+export type Currency = "USD" | "EUR" | "CLP";
 
 export interface CurrencyDetails {
   symbol: string;
