@@ -6,6 +6,7 @@
 [![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://supabase.com/)
 [![Stripe](https://img.shields.io/badge/Stripe-Payments-6772E5?style=for-the-badge&logo=stripe&logoColor=white)](https://stripe.com/)
+[![CI](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
 
 Una plataforma web de nivel empresarial para el comercio electrónico y la gestión administrativa de hiperautos de ultra lujo, enfocada exclusivamente en los modelos más representativos de **Bugatti**, **Lamborghini** y **Ferrari**.
 
@@ -172,19 +173,41 @@ npx playwright show-report
 
 ---
 
-## Comandos de Verificación de Calidad
-
+## Pipeline de Integración Continua (CI/CD)
+ 
+El repositorio cuenta con una pipeline automatizada de **GitHub Actions** (`.github/workflows/ci.yml`) que implementa la estrategia *Shift-Left* de 5 Quality Gates obligatorios en cada Pull Request y push a `main`:
+ 
+1. **Lint Check**: `pnpm run lint` (ESLint 9 sin errores).
+2. **Type Check**: `npx tsc --noEmit` (TypeScript 5 estricto).
+3. **Unit & Component Tests**: `pnpm run test:unit` (20 pruebas en Vitest).
+4. **Security Audit**: `pnpm audit --audit-level=high` (monitoreo de vulnerabilidades en dependencias).
+5. **Build Verification**: `pnpm run build` (`prisma generate && next build` hermético con variables de entorno simuladas).
+ 
+Adicionalmente, se incluye **Dependabot** (`.github/dependabot.yml`) para la revisión semanal automática de actualizaciones de seguridad en paquetes npm.
+ 
+---
+ 
+## Comandos de Verificación de Calidad Local
+ 
 - **Verificación de Tipos de TypeScript**:
   ```bash
   npx tsc --noEmit
   ```
 - **Linter de Código**:
   ```bash
-  npm run lint
+  pnpm run lint
+  ```
+- **Pruebas Unitarias y de Componentes**:
+  ```bash
+  pnpm run test:unit
+  ```
+- **Auditoría de Seguridad de Dependencias**:
+  ```bash
+  pnpm audit --audit-level=high
   ```
 - **Prueba de Compilación de Producción**:
   ```bash
-  npm run build
+  pnpm run build
   ```
 
 ---
