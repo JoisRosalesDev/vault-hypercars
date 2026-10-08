@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -15,6 +16,9 @@
   --color-accent-hover: #0891b2;
   --color-accent-glow: rgba(6, 182, 212, 0.35);
   --color-accent-contrast: #000000;
+
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
 html[data-theme="cyan"] {
